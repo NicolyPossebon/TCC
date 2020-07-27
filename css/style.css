@@ -1,0 +1,165 @@
+body{
+	font-family: 'Lato';
+	margin: 0;
+	line-height: 1.7; /* Espaçamento de linha */
+	background-color: #F6F6F6; 
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato';
+  font-weight: 800 !important;
+  font-size: 1rem; /* Tamanho da Letra */
+
+}
+
+
+
+/* NAVBAR */
+.nav-style{
+	margin-right: 12rem;       /* Deixa os links da nav mais pro meio */
+	margin-left: 12rem;        
+	font-family: 'Lato';       /* Fonte   Letra   */
+	font-weight: 750;          /* Largura Letra */
+    font-size: 1rem;           /* Tamanho Letra */
+    text-transform: uppercase; /* Tudo Maiúsculo    */
+}
+
+.dropdown-menu{
+    background-color: #716D6D;
+}
+
+.dropdown-texto{
+    font-family: 'Lato';       /* Fonte   Letra   */
+    font-weight: 750;          /* Largura Letra */
+    font-size: 1rem;           /* Tamanho Letra */
+    text-transform: uppercase; /* Tudo Maiúsculo    */  
+}
+
+.dropdown-item{
+    color: blue;
+}
+
+
+
+/* RODAPÉ */
+.rodape-titulo{
+	font-family: 'Lato'; 
+	font-weight: 800;    
+    font-size: 1.2rem;     
+    text-transform: uppercase;
+}
+
+.rodape-texto{
+	font-family: 'Lato'; /* Fonte da Letra   */
+	font-weight: 400;    /* Largura da Letra */
+    font-size: 1rem;     /* Tamanho da Letra */
+}
+
+
+/* CORES */
+.verde{
+	background-color: #E4FBE5;
+}
+
+.vermelho{
+	background-color: #FBD8D8;
+}
+
+.cinza{
+	background-color: #716D6D;
+}
+
+/* HR */
+.hr-verde{
+	width: 100%;
+    height: 3px;
+    background-color: #E4FBE5;
+}
+
+.hr-vermelho{
+	width: 100%;
+    height: 3px;
+    background-color: #FBD8D8;
+}
+
+/* NOTÍCIAS */
+.titulo{      
+	font-weight: 750;         
+    font-size: 1.5rem;         
+    text-transform: uppercase;
+    word-spacing: .5rem;
+}
+
+.texto{
+	font-weight: 450;         
+    font-size: 1.2rem;         
+    word-spacing: 0.5rem;	
+}
+
+.data{
+	font-weight: 450;         
+    font-size: 1rem;         
+    word-spacing: 0.5rem;
+    font-style: italic;		
+}
+
+.botoes{
+	font-family: 'Lato';       
+	font-weight: 750;          
+    font-size: 1rem;          
+    text-transform: uppercase; 
+}
+
+.botoes-texto{
+	font-family: 'Lato';       
+	font-weight: 600;          
+    font-size: 1rem;        
+    text-transform: uppercase; 
+    color: #fff;
+}
+
+
+/* TEXT AREA*/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.toolbar {}
+.tool-list {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+    border-raduis: 10px;
+}
+
+.tool {}
+.tool--btn {
+    display: block;
+    border: none;
+    padding: .5rem;
+}
+
+#output {
+    height: 300px; 
+    padding: 1rem;
+}
+
+/* LOGIN */
+
+.texto-login{
+    font-family: 'Lato';       /* Fonte   Letra   */
+    font-weight: 800;          /* Largura Letra */
+    font-size: 1rem;           /* Tamanho Letra */
+    text-transform: uppercase; /* Tudo Maiúsculo    */
+}
+
+
