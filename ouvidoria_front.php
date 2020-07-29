@@ -27,6 +27,8 @@
 			<!-- Fontes -->
 			<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+			<!-- JQuery -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 			
 	</head>
 	<body>
@@ -38,22 +40,69 @@
 
 		<div class="container-fluid mt-3 mb-3">
 			<div class="row justify-content-center">
+				<div class="col-lg-3 col-md-3 col-sm-10 border border-dark bg-white mr-2 mb-3" 
+				     style="height: 500px;">
+					
+					<!-- Botão de Cadastro -->
+					<button type="button" 
+							id="mostrar-form" 
+							class="btn btn-lg btn-block btn-outline-dark texto-login mt-3"> 
+						Cadastrar Denúncia
+						<i class="fas fa-caret-down ml-1"></i>
+					</button>
 
-				<div class="col-3 border border-dark mr-2" style="height: 500px;">
-					Denúncias Cadastradas
+
+					<!-- Formulário de Cadastro -->
+					<form id="cadastrar" action="denuncia_cadastro.php" method="post" style="display:none">
+						
+						<div class="row text-center">
+							<div class="col-12">
+								<input type="text" class="form-control mt-2" placeholder="De um Título a Denúncia" name="titulo_denuncia" required>
+							</div>
+					    </div>
+
+					    <div class="row justify-content-center">
+							<div class="col-5">
+								<input type="radio" required name="anonimato_denuncia" value="1"> 
+								Anônima
+							</div>
+
+							<div class="col-5 text-right">
+								<input type="radio" required name="anonimato_denuncia" value="2"> 
+								Renomada
+							</div>
+					    </div>
+
+						<div class="row justify-content-center">
+							<div class="col-10">					    
+								<input type="submit" class="btn btn-block btn-outline-success mt-2 texto-login" value="Cadastrar">
+							</div>
+					    </div>
+					</form>
+
+
+
+					<script>
+
+						//#mostrar-form: id do botão atribuido ao evento click. Quando o evento é disparado, chama toggle.
+						$("#mostrar-form").click(function () {
+							//#cadastrar: id do elemento que é pra ser exibido/ocultado, no caso do formulário
+							$("#cadastrar").toggle();
+
+						})
+
+					</script>
+
+
 				</div>
 
-				<div class="col-8 border border-dark">
-					MENSAGENS DO
-					<?php 
-						if ($_SESSION['tipo_usuario'] == 1) {
-							echo "ADM";
-							# code...
-						} else{
-							echo "USU COMUM";
-						}
+				<!-- MENSAGENS DAS DENÚNCIAS -->
+				<div class="col-lg-8 col-md-3 col-sm-10 border border-dark bg-white" 
+				     style="height: 500px;">
+					
 
-					?>
+
+
 				</div>
 
 			</div>
