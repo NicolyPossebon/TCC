@@ -38,13 +38,19 @@
 						<div class="row justify-content-center"> 
 							<div class="col-sm-9 col-md-8 col-lg-7 text-center"> 
 								<i class="fas fa-user fa-4x mb-2 mt-4"></i>
-									<?php 
-									    if(isset($_SESSION['erros'])) {
+								 <?php 
+									  if(isset($_SESSION['erros'])) {
 									  		echo "<div class='alert alert-danger' role='alert'>";
 											echo $_SESSION['erros'];
 											echo "</div>";
 										}
-									?>
+
+										if(isset($_SESSION['acertos'])){
+											echo "<div class='alert alert-success' role='alert'>";
+											echo $_SESSION['acertos'];
+											echo "</div>";
+										}
+							     ?>
 								<hr>
 							</div>
 						</div>

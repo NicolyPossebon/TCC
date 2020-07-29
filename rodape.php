@@ -5,7 +5,7 @@
 			    <div class="row justify-content-center">
                 				
                 	<!-- Localização -->
-			      	<div class="col-sm-10 col-mb-8 col-lg-4 text-center">
+			      	<div class="col-sm-5 col-mb-5 col-lg-4 text-center">
 			      		<h4 class="mb-2 text-white pt-3 rodape-titulo"> Endereço </h4>
 			      		<hr class="hr-verde">
                         <p class="lead mb-0 text-white text-justify rodape-texto">
@@ -13,12 +13,12 @@
                         </p>
 			      	</div>
 
-                	<div class="col-lg-2">
+                	<div class="col-sm-2 col-mb-2 col-lg-2">
                 	<!-- ALERTA DE GAMBIARRA -->		
                 	</div>
 
 			   		<!-- Redes Socias -->
-			   		<div class="col-sm-10 col-mb-8 col-lg-4 text-center">
+			   		<div class="col-sm-5 col-mb-5 col-lg-4 text-center">
 		                <h4  class = "mb-2 text-white pt-3 rodape-titulo" > Redes Socias </h4 >
 		                <hr class="hr-vermelho">
 		                    <!-- Facebook -->

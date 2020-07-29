@@ -116,7 +116,7 @@
 						<div class="row justify-content-center">
 							<div class="col-sm-11 col-md-10 col-lg-9 mb-3">
 								<label>Senha</label>
-								<input type="password" class="form-control" name="senha_usuario" value="<?php echo $usuario['senha_usuario'];?>">
+								<input type="password" class="form-control" name="senha_usuario">
 							</div>
 						</div>
 

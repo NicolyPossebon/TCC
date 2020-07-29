@@ -1,35 +1,60 @@
 <?php
-session_start();
-include("conectar.php");
 
-$nome_usuario  = $_POST['nome_usuario'];
-$email_usuario = $_POST['email_usuario'];
-$senha_usuario = $_POST['senha_usuario'];
+	//session + bd.
+	session_start();
+	include("conectar.php");
 
-$select = "select * from usuario where email_usuario = '$email_usuario'";
-$result = mysqli_query($conectar, $select);
-$row = mysqli_num_rows($result);
+	//recendo dados do formulário e tratando com  mysqli_real_escape_string.
+	$nome_usuario  = mysqli_real_escape_string($conectar, $_POST["nome_usuario"]);
+	$email_usuario = mysqli_real_escape_string($conectar, $_POST["email_usuario"]);
+	$senha_usuario = md5(mysqli_real_escape_string($conectar, $_POST["senha_usuario"]));
 
-$select2 = "select * from usuario where nome_usuario = '$nome_usuario'";
-$result2 = mysqli_query($conectar, $select2);
-$row2 = mysqli_num_rows($result2);
+	//verificando se há outro usuário já cadastrado com o email que se deseja cadastrar.
+	$select = "select * from usuario where email_usuario = '$email_usuario'";
 
-if ($row2 >= 1){
-	 $_SESSION['erros'] = "Este nome já está cadastrado!";
-	header('location:usuario_cadastro_front.php');
-} else if ($row >= 1){
-	 $_SESSION['erros'] = "Este email já está cadastrado!";
-	header('location:usuario_cadastro_front.php');
-} else if ($row == 0 && $row2 == 0){
+	//query executando o sql
+	$result = mysqli_query($conectar, $select);
 
-	$insert = "INSERT INTO usuario 
-					(nome_usuario, email_usuario, tipo_usuario, senha_usuario) 
-			   VALUES
-			 		('$nome_usuario', '$email_usuario', 2, '$senha_usuario')";
+	//num_rows atribundo a $row o número de linhas encontradas.
+	$row = mysqli_num_rows($result);
 
-	$query = mysqli_query($conectar, $insert);
-	header('location:usuario_login_front.php');
-}
+	//mesmo com o nome
+	$select2 = "select * from usuario where nome_usuario = '$nome_usuario'";
+	$result2 = mysqli_query($conectar, $select2);
+	$row2 = mysqli_num_rows($result2);
 
-mysql_close($conectar);
+	//se a $row e $row2 não forem 0, significa que usuário á tem as infos cadastras
+	if ($row2 >= 1){
+		 $_SESSION['erros'] = "Este nome já está cadastrado!";
+
+		 //fechando a conexão do bd
+	     mysqli_close($conectar);
+
+		header('location:usuario_cadastro_front.php');
+	} else if ($row >= 1){
+		 $_SESSION['erros'] = "Este email já está cadastrado!";
+
+		//fechando a conexão do bd
+	    mysqli_close($conectar);
+
+		header('location:usuario_cadastro_front.php');
+
+	//somente se ambas as $rows forem 0, é que pode-se efetuar o cadastrado
+	} else if ($row == 0 && $row2 == 0){
+
+		$insert = "INSERT INTO usuario 
+						(nome_usuario, email_usuario, tipo_usuario, senha_usuario) 
+				   VALUES
+				 		('$nome_usuario', '$email_usuario', 2, '$senha_usuario')";
+
+		$query = mysqli_query($conectar, $insert);
+		unset($_SESSION['erros']);
+		$_SESSION['acertos'] = "Cadastro Realizado com Sucesso!";
+		//fechando a conexão do bd
+	    mysqli_close($conectar);
+		header('location:usuario_login_front.php');
+
+	}
+
+
 ?>
