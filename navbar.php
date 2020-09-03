@@ -1,17 +1,18 @@
 <?php
-if(empty($_SESSION['tipo_usuario'])){
+	//Se não houver session tipo_usuario, significa que não ninguém logado.
+	if(empty($_SESSION['tipo_usuario'])){
 		echo "
 			<nav class='navbar navbar-expand-lg navbar-dark py-4' style='background-color: #716D6D'>
 				  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation'>
 					<span class='navbar-toggler-icon'></span>
 				 </button>
 				<div class='collapse navbar-collapse nav-style' id='navbarTogglerDemo01'>
-					<a class='navbar-brand' href='#' style='font-size: 1.10rem'>
+					<a class='navbar-brand' href='informacoes_listagem.php' style='font-size: 1.10rem'>
 						Futuro Nome do Sistema
 					</a>
 					<ul class='navbar-nav ml-auto mt-2 mt-lg-0'>
 						<li class='nav-item'>
-						    <a class='nav-link text-white' href='#'>Notícias</a>
+						    <a class='nav-link text-white' href='noticias_listagem.php'>Notícias</a>
 						</li>
 						<li class='nav-item rounded vermelho'>
 						    <a class='nav-link text-dark' href='usuario_login_front.php'>Ouvidoria</a>
@@ -20,6 +21,8 @@ if(empty($_SESSION['tipo_usuario'])){
 				</div>
 			</nav>
 		";
+
+	//1 significa que é AMD.
 	} else if($_SESSION["tipo_usuario"] == '1'){
 		echo "
 			<nav class='navbar navbar-expand-lg navbar-dark py-4' style='background-color: #716D6D'>
@@ -27,18 +30,18 @@ if(empty($_SESSION['tipo_usuario'])){
 					<span class='navbar-toggler-icon'></span>
 				 </button>
 				<div class='collapse navbar-collapse nav-style' id='navbarTogglerDemo01'>
-					<a class='navbar-brand' href='#' style='font-size: 1.10rem'>
+					<a class='navbar-brand' href='informacoes_listagem.php' style='font-size: 1.10rem'>
 						Futuro Nome do Sistema
 					</a>
 					<ul class='navbar-nav ml-auto mt-2 mt-lg-0'>
 						<li class='nav-item'>
-						    <a class='nav-link text-white' href='#'>
+						    <a class='nav-link text-white' href='noticias_listagem.php'>
 						    	Notícias
 								<i class='fas fa-newspaper'></i>
 							</a>
 						</li>
 						<li class='nav-item'>
-						    <a class='nav-link text-white' href='tela_ouvidoria.php'>
+						    <a class='nav-link text-white' href='ouvidoria_front.php'>
 						    	Ouvidoria
 						    	<i class='fas fa-headphones-alt'></i>
 						    </a>
@@ -64,6 +67,8 @@ if(empty($_SESSION['tipo_usuario'])){
 				</div>
 			</nav>
 		";
+
+	//2 significa que é usuário comum.
 	} else if($_SESSION["tipo_usuario"] == '2'){
 		echo "
 			<nav class='navbar navbar-expand-lg navbar-dark py-4' style='background-color: #716D6D'>
