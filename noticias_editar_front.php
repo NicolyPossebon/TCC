@@ -12,7 +12,6 @@
 		$descricao_noticia = $dados_noticia['descricao_noticia'];
 	}
 
-
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +67,14 @@
 						<div class="form-row justify-content-center"> 
 							<div class="form-grup col-10 mb-3 text-center"> 
 								<img class="img-fluid">
+							</div>
+						</div>
+
+						<!-- Vídeo -->
+						<div class="form-row justify-content-center">
+							<div class="form-grup  mb-3 col-10">
+								<label for="#">Vídeo</label>
+								<input type="text" class="form-control" name="video_noticia" placeholder=""  data-length="10">
 							</div>
 						</div>
 

@@ -56,7 +56,7 @@
 		echo '<div class="row row-cols-1 row-cols-md-3 mb-5 pt-3 mr-3 ml-3">';
 	    foreach ($query_noticia as $dados_noticia) {
 	    	$id_noticia        = $dados_noticia['id_noticia'];
-	    	$titulo_noticia    = $dados_noticia['titulo_noticia'];
+	        $titulo_noticia    = $dados_noticia['titulo_noticia'];
 	    	$data_noticia      = $dados_noticia['data_noticia'];
 	    	$descricao_noticia = substr($dados_noticia['descricao_noticia'], 0, 125);
 
@@ -65,13 +65,15 @@
 	    					   ORDER BY id_arquivo_noticia ASC LIMIT 1";
 	    	$query_arquivo  = mysqli_query($conectar, $select_arquivo);
 
+
+	    	
+
 	    	foreach ($query_arquivo as $dados_arquivo) {
 	    		$endereco_arquivo = $dados_arquivo['endereco_arquivo_noticia'];
 	    		$tipo_arquivo     = $dados_arquivo['tipo_arquivo_noticia'];	
 
 	    	   if($tipo_arquivo == 1){
-			   echo '
-			    
+			   echo ' 
 		  			<div class="col mb-4">
 					    <div class="card shadow rounded">
 					      <img src="'.$endereco_arquivo.'" class="card-img-top" style=" width: 100%;
@@ -83,10 +85,41 @@
 					        </div>
 					    </div>
 			    </div>';
-			} 
-	    	}
+			} else if($tipo_arquivo == 2){
+				echo ' 
+		  			<div class="col mb-4">
+					    <div class="card shadow rounded">
+					      <img src="./img/audio.png" class="card-img-top" style=" width: 100%;
+  						height: 250px;" alt="...">
+					      <div class="card-body text-center">
+					        <h5 class="card-title">'.$titulo_noticia.'</h5>
+					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        </div>
+					    </div>
+			    	</div>';
 
+			} else if($tipo_arquivo == 3){
+				echo ' 
+		  			<div class="col mb-4">
+					    <div class="card shadow rounded">
+					      <img src="./img/video.png" class="card-img-top" style=" width: 100%;
+  						height: 250px;" alt="...">
+					      <div class="card-body text-center">
+					        <h5 class="card-title">'.$titulo_noticia.'</h5>
+					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        </div>
+					    </div>
+			    	</div>';
+
+			}else{
+			
+	    	}
 	    }
+	    }
+
+	    
 	    echo '</div>';
 	?>
 
@@ -95,14 +128,14 @@
 		include_once("rodape.php");
 	?>
 
-  		<!-- Icons -->
-  		<script type="text/javascript" src="icons/js/all.js"></script> 
-  	    <!-- Tamplete -->
-    	<script src="vendor/jquery/jquery.min.js"></script>
-    	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	    <!-- Bootstrap: jQuery, Popper.js, Plugin JS  -->
-	    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  	<!-- Icons -->
+  	<script type="text/javascript" src="icons/js/all.js"></script> 
+    <!-- Tamplete -->
+  	<script src="vendor/jquery/jquery.min.js"></script>
+   	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap: jQuery, Popper.js, Plugin JS  -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -41,7 +41,7 @@
 
 		<div class="container-fluid mt-3 mb-3">
 			<div class="row justify-content-center">
-				<div class="col-lg-3 col-md-3 col-sm-10 border border-dark mr-2 mb-3 bg-white" 
+				<div class="col-lg-3 col-md-3 col-sm-10 border border-secondary mr-2 mb-3 bg-white" 
 				     style="height: 500px; overflow: auto; position: relative">
 
 				    <?php
@@ -51,7 +51,7 @@
 				</div>
 
 				<!-- MENSAGENS DAS DENÚNCIAS -->
-				<div class="col-lg-8 col-md-8 col-sm-10 border border-dark bg-white justify-content-center" 
+				<div class="col-lg-8 col-md-8 col-sm-10 border border-secondary bg-white justify-content-center" 
 				     style="height: 500px; position: relative; overflow: auto ">
 
 				    <?php

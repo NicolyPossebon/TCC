@@ -1,6 +1,6 @@
 
 
-		<footer class="py-5" style="background-color: #575555">
+		<footer class="py-5 mt-3" style="background-color: #575555">
 			<div class="container">
 			    <div class="row justify-content-center">
                 				

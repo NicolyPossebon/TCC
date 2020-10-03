@@ -4,7 +4,31 @@
 	// O teste é feito para que, sempre que um usuário entrar, ele não ver o erro.
 	if(empty($_GET['id'])){
 
-		echo "Oi, denuncie!";
+		
+		echo '
+
+			<div class="row mt-5">
+			 	<div class="col text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
+					Olá, seja bem vindo a nossa ouvidoria!
+				</div>
+			</div>
+
+			<div class="row mt-5 justify-content-center ">
+			 	<div class="col-8 text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
+				        Lorem Ipsum é simplesmente um texto fictício da indústria de impressão e composição.
+				        LoremIpsum tem sido o texto fictício padrão da indústria desde os anos 1500, quando um 
+				        mpressor desconhecido pegou uma galé do tipo e embaralhou para fazer um livro de amostra
+				        de tipos.
+				</div>
+			</div>
+
+			<div class="row mt-5 justify-content-center ">
+			 	<div class="col-8 text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
+				       Por isso, você pode se sentir a vontade em denúnciar! Estaremos ouvindo.
+				</div>
+			</div>
+
+		';
 
 	} else {
 

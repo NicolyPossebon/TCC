@@ -19,5 +19,5 @@
 	mysqli_close($conectar);
 
 	//redirecionando
-	//header("location:noticia_listagem.php");
+	header("location:noticias_listagem.php");
 ?>

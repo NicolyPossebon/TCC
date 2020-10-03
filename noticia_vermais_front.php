@@ -3,19 +3,21 @@
 	session_start();
 	include_once("conectar.php");
 
+	//ID da notícias escolhida.
 	$id_noticia = $_GET['id_noticia'];
 
+	//Select pegando todas as infos dela.
 	$select_noticia = "SELECT * FROM noticia WHERE id_noticia = $id_noticia";
+
+	//Query executando o select.
 	$query_noticia = mysqli_query($conectar, $select_noticia);
 
+	//Foreach percorrendo elas;
 	foreach ($query_noticia as $dados_noticia) {
 		$titulo_noticia    = $dados_noticia['titulo_noticia'];
 		$descricao_noticia = $dados_noticia['descricao_noticia'];
-		$data_noticia      = $dados_noticia['data_noticia'];
+		$data_noticia      = $dados_noticia['data_noticia'];	
 	}
-
-	$select_arquivo = "SELECT * FROM arquivo_noticia WHERE id_noticia = $id_noticia";
-	$query_arquivo = mysqli_query($conectar, $select_arquivo);
 
 ?>
 
@@ -52,29 +54,99 @@
 		?>
 
 		<div class="container">
-			<div class="row justify-content-center mb-5 pt-2 mt-2">
-				<div class="col-sm-12 col-md-10 col-lg-10 p-3 mt-4 rounded-lg text-center">
+			<div class="row justify-content-center mb-5 pt-2 mt-2 bg-primary ">
+				<div class="col-sm-12 col-md-10 col-lg-10 p-3 mt-4 rounded-lg text-center bg-success">
 
 					<!-- Título -->
 					<div class="row">
 						<div class="col">
-					<p class="titulo text-center"><?php echo $titulo_noticia; ?></p>
+							<p class="titulo text-center"><?php echo $titulo_noticia; ?></p>
 						</div>
 					</div>
 					
 					<!-- Data -->
 					<div class="row">
 						<div class="col">
-							<p class="text-left data">Publicado em <?php echo substr( $data_noticia, 0, 16) ?></p>
+							<p class="text-left data">Publicado em <?php echo substr($data_noticia, 0, 16) ?></p>
 						</div>
 					</div>
 
-					<!-- Imagem -->
-					<div class="row">
-						<div class="col">
-							<img src="./img/notícias_exe/noticia_c.png" class="mb-3 mt-3">
-						</div>
-					</div>
+					<!-- Foto -->
+					<?php
+						//Select pegando todos os arquivos relacionados a notícia.
+						$select_arquivo = "SELECT * FROM arquivo_noticia WHERE id_noticia = $id_noticia";
+
+						//Query executando o select.
+						$query_arquivo = mysqli_query($conectar, $select_arquivo);
+
+							//Foreach percorrendo os dados.
+							foreach ($query_arquivo as $tipo) {
+								
+								//Se for == 1, é foto, logo o carrousel é implementado.
+								if($tipo['tipo_arquivo_noticia'] == 1){
+									
+									echo ' 
+									<div class="row">
+										<div class="col">
+											<div id="carouselExampleControls" class="carousel slide"              data-ride="carousel">
+											  	<div class="carousel-inner"> ';
+
+											  		//
+												  	foreach($query_arquivo as $key => $midia){
+
+												  		if($key == 0){
+			               									echo "<div class='carousel-item active'>";			
+			             								} else {
+			                								echo "<div class='carousel-item'>";		
+			              								}
+
+			              								echo "
+			              								<img src='".$midia['endereco_arquivo_noticia']."' class='d-block w-100'></img>
+			                 							</div> ";
+												  	}
+													echo'   
+													
+													  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+													    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+													    <span class="sr-only">Previous</span>
+													  </a>
+													  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+													    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+													    <span class="sr-only">Next</span>
+													  </a>
+												</div>
+											</div>
+										</div>
+									</div> '; 
+
+								// Se o tipo == 2, Áudio;
+								
+
+							} else if ($tipo['tipo_arquivo_noticia'] == 2){
+		               				echo "
+		                 				<div class='row'>
+		                 					<div class='col bg-danger'>
+		                 						<br>
+		                 							<audio preload='none' controls='controls'>
+		                         			  			<source src='".$tipo['endereco_arquivo_noticia']."'/>
+		                        			 		</audio> <br>
+		                        			 	<br>
+		                        			</div>
+		                        		</div>";
+	              			
+	              				//Se o tipo == 3, vídeo
+	              				} else if($tipo['tipo_arquivo_noticia'] ==3){	
+									echo $tipo['endereco_arquivo_noticia'];	
+									echo '
+										<div class="row mt-3">
+											<div class="col">
+												<iframe width="560" height="315" src="'.$tipo['endereco_arquivo_noticia'].'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											</div>
+										</div>';
+								}
+							}
+						?>
+
 					
 					<!-- Descrição -->
 					<div class="row">
@@ -98,7 +170,7 @@
 											Editar		
 										</a>
 							 			<a class="btn rounded vermelho botoes" 
-							 			   href="noticia_excluir_back.php?id=<?php echo $id_noticia; ?>" 
+							 			   href="noticia_excluir_back.php?id='.$id_noticia.'" 
 							 			   data-confirm="Tem certeza que deseja excluir o item selecionado?">
 							 				<i class="far fa-trash-alt fa-1x"></i>
 							 				Excluir
@@ -107,13 +179,12 @@
 								</div>
 							';
 						}
-
 					?>
-					
-
+						
 				</div>
 			</div>
 		</div>
+		
 
 		<script type="text/javascript">
 			//Função para aparecer a caixinha de confiramção para excluir a denuncia
