@@ -93,6 +93,6 @@
 	
 	mysqli_close($conectar);
 	
-	header('location:noticia_vermais_front.php?id_noticia='.$id_noticia.'');  
+	header('location:noticia_vermais_front.php?id='.$id_noticia.'');  
 
 ?>

@@ -93,16 +93,19 @@
 
 											  		//
 												  	foreach($query_arquivo as $key => $midia){
-
+												  		
 												  		if($key == 0){
-			               									echo "<div class='carousel-item active'>";			
+			               									echo "
+			               									<div class='carousel-item active'>
+			               										<img src='".$midia['endereco_arquivo_noticia']."' class='d-block w-100'></img>
+			                 								</div> ";			
 			             								} else {
-			                								echo "<div class='carousel-item'>";		
+			                								echo "
+			                								<div class='carousel-item'>
+			                									<img src='".$midia['endereco_arquivo_noticia']."' class='d-block w-100'></img>
+			                 								</div> ";		
 			              								}
 
-			              								echo "
-			              								<img src='".$midia['endereco_arquivo_noticia']."' class='d-block w-100'></img>
-			                 							</div> ";
 												  	}
 													echo'   
 													
@@ -135,12 +138,13 @@
 		                        		</div>";
 	              			
 	              				//Se o tipo == 3, vídeo
-	              				} else if($tipo['tipo_arquivo_noticia'] ==3){	
-									echo $tipo['endereco_arquivo_noticia'];	
+	              				} else if($tipo['tipo_arquivo_noticia'] == 3){	
+										
 									echo '
 										<div class="row mt-3">
 											<div class="col">
-												<iframe width="560" height="315" src="'.$tipo['endereco_arquivo_noticia'].'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+												<iframe width="560" height="315" src="'.$tipo['endereco_arquivo_noticia'].'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+												</iframe>
 											</div>
 										</div>';
 								}

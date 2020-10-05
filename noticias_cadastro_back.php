@@ -84,7 +84,7 @@
     				    $insert_arquivo = "INSERT INTO arquivo_noticia 
     				    				(id_noticia, endereco_arquivo_noticia, tipo_arquivo_noticia) 
     				    			VALUES 
-    				    				($id_noticia, '$arquivo_insert', '$tipo')";
+    				    				($id_noticia, '$arquivo_insert', $tipo)";
     				    $query_arquivo = mysqli_query($conectar, $insert_arquivo);
             
                     } else {

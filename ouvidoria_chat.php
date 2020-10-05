@@ -131,9 +131,60 @@
 
 		}//fim do foreach
 
+		$select_arquivos = "SELECT * FROM arquivo_denuncia WHERE id_denuncia = $id_denuncia";
+		$query_arquivos  = mysqli_query($conectar, $select_arquivos);
+
+		foreach ($query_arquivos as $arquivos) {
+			$endereco_arquivo = $arquivos['endereco_arquivo_denuncia'];
+			$tipo_arquivo     = $arquivos['tipo_arquivo_denuncia'];
+			$id_usuario       = $arquivos['id_usuario'];
+
+			if($id_usuario == $_SESSION['id_usuario']){
+				if($tipo_arquivo == 1){
+					echo '
+					<div class="row justify-content-end">
+						<div class="col-6 text-right mb-1">
+								<img src="'.$endereco_arquivo.'"" class="d-block w-100"></img>";
+						</div>
+					</div>';
+
+				} else {
+					echo "
+					<div class='row justify-content-end'>
+						<div class='col-6 text-right mb-1'>
+						<audio preload='none' controls='controls'>
+			                <source src='".$endereco_arquivo."'/>
+			              </audio>
+			            </div>
+			        </div>";
+				}
+			} else {
+				if($tipo_arquivo == 1){
+					echo '
+					<div class="row justify-content-start">
+						<div class="col-6 text-left mb-1">
+								<img src="'.$endereco_arquivo.'"" class="d-block w-100"></img>
+						</div>
+					</div>';
+
+				} else {
+					echo "
+					<div class='row justify-content-start'>
+						<div class='col-6 text-left mb-1'>
+						<audio preload='none' controls='controls'>
+			                <source src='".$endereco_arquivo."'/>
+			              </audio>
+			            </div>
+			        </div>";
+				}
+
+			}
+
+		}
+
 	echo '
 			<!-- Formulário de Mensagem -->
-			<form method="post" action="denuncia_mensagem_cadastro.php">
+			<form method="post" action="denuncia_mensagem_cadastro.php" enctype="multipart/form-data">
 				<div class="row aling-itens-center" style="height: 500px;">
 					
 					<!-- Input Messagem -->
@@ -144,9 +195,17 @@
 				    		   style="position:absolute; bottom:0; width: 100%;"
 				    		   required>
 				    </div>
-						        		
-					<!-- Hiddem pro ID Denuncia -->
+				</div>
+
+				    <!-- Hiddem pro ID Denuncia -->
 					<input type="hidden" name="id_denuncia" value="'.$id_denuncia.'">
+
+				    <!-- Input Arquivo -->
+				    	<div class="form-row justify-content-center"> 
+							<div class="form-grup col-10 mb-3"> 
+								<label for="#">Mídia da Notícia</label>
+								<input type="file" class="form-control" name="foto[]" multiple id="imagem" onchange="previewImagem()">
+							</div>			        		
 							        	
 					<!-- Button -->
 					<div class="col-2 m-0 p-0">
