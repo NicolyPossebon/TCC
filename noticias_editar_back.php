@@ -22,15 +22,15 @@
 		//Se tiver fazio não atualiza.
 	}else {
 
-		
-		$video             	   = "https://www.youtube.com/embed/";
-		$video_noticia         = substr($noticia, 32,-28);
-    	$endereco_noticia      = $video.$video_noticia;
-
+ 		$video            = "https://www.youtube.com/embed/";  
+        $cortando         = explode( "&", $noticia);
+        $pegando          = $cortando[0];
+        $videonoticia     = substr($pegando, 32);
+        $endereco_arquivo = $video.$videonoticia;
 
     	//update dos arquivos.
 		$update_arquivo = "UPDATE arquivo_noticia
-						   SET endereco_arquivo_noticia = '$endereco_noticia',
+						   SET endereco_arquivo_noticia = '$endereco_arquivo',
 						   	   tipo_arquivo_noticia     = 3
 						   WHERE id_noticia = $id_noticia and tipo_arquivo_noticia = 3";
 		//Query executando o update.
@@ -93,6 +93,6 @@
 	
 	mysqli_close($conectar);
 	
-	header('location:noticia_vermais_front.php?id='.$id_noticia.'');  
+	header('location:noticia_vermais_front.php?id_noticia='.$id_noticia.'');  
 
 ?>

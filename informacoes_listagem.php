@@ -30,47 +30,105 @@
 		<!-- Navbar -->
 		<?php
 			include("navbar.php");
+		?>
 
+        <header  class = " masthead " img=".img/texto.png" >
+            <div  class = " container " >
+                <div  class = " masthead-subheading " > Bem-vindo ao nosso estúdio! </ div >
+                <div  class = " masthead-header text-uppercase " > Prazer em conhecê-lo </ div >
+                <A  class = " btn btn-primário btn-xl texto maiúsculas js-scroll-trigger " href =" #services " > Tell Me More </ a >
+            </div >
+        </header >
+        <?php
 			//Selecionando as descrições.
-			$select_descricoes = "SELECT * FROM descricoes";
+			$select_descricoes = "SELECT * FROM descricao";
 			//Executando o select.
 			$query_descricoes  = mysqli_query($conectar, $select_descricoes);
 
 			//Percorrendo as Informações.
 			foreach ($query_descricoes as $dados_descricoes) {
-				$cai      = $dados_descricoes['descricao_cai'];
-				$napne    = $dados_descricoes['descricao_napne'];
-				$neabi    = $dados_descricoes['descricao_neabi'];
-				$nugedis  = $dados_descricoes['descricao_nugedis'];
+				$cai      = $dados_descricoes['cai_descricao'];
+				$napne    = $dados_descricoes['napne_descricao'];
+				$neabi    = $dados_descricoes['neabi_descricao'];
+				$nugedis  = $dados_descricoes['nugedis_descricao'];
 
 				echo '
-					<div class="row mb-5 mt-5">
-						<div class="col-12 text-center">
-							CAI
+						<div class="row text-center mt-5 d-flex justify-content-around">
+							<div class="col-3">
+								<button class="cinza btn-lg btn-block text-white" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+					    			CAI
+					  			</button>
+					  		</div>
+					  	</div>
+
+					  	<div class="row mt-5 text-center justify-content-center">
+							<div class="col-8">
+								<div class="collapse" id="collapse">
+								    <div class="card card-body">
+								    	'.$cai.'
+								    </div>
+								</div>
+							</div>
 						</div>
-					</div>
+					
+					<div class="container" id="mygroup">
+						<div class="row text-center mt-5 d-flex justify-content-around">
+							<div class="col-3">
+								<button class="cinza btn-lg btn-block text-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+					    			NAPNE
+					  			</button>
+					  		</div>
 
-					<div class="row d-flex justify-content-around mb-5">
+					  		<div class="col-3">
+								<button class="cinza btn-lg btn-block text-white" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+					    			NEABI
+					  			</button>
+					  		</div>
 
-						<div class="col-2 text-center">
-							 <a href="#" class="btn btn-dark btn-lg btn-block">NAPNE</a>
+					  		<div class="col-3">
+								<button class="cinza btn-lg btn-block text-white" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+					    			NUGEDIS
+					  			</button>
+							</div>
 						</div>
 
-						<div class="col-2 text-center">
-							  <a href="#" class="btn btn-dark btn-lg btn-block">NEABI</a>
-						</div>
+						<div class="row mt-5">
+							<div class="col">
+								<div class="collapse" id="collapseExample" data-parent="#mygroup">
+								    <div class="card card-body">
+								    	'.$napne.'
+								    	<br>
+								    	<a href="#" class="btn btn-outline-dark btn-sm"> 
+								    		<i class="far fa-eye"></i> Ver Mais
+								    	</a>
+								    </div>
+								</div>
 
-						<div class="col-2 text-center">
-						     <a href="#" class="btn btn-dark btn-lg btn-block">NUGEDIS</a>
-						</div>
-
-					</div>
-				';
+								<div class="collapse" id="collapseExample2" data-parent="#mygroup">
+								    <div class="card card-body">
+								    	'.$neabi.'
+								    	<a href="#" class="btn btn-outline-dark btn-sm"> 
+								    		<i class="far fa-eye"></i> Ver Mais
+								    	</a>
+								    </div>
+								</div>
+						
+								<div class="collapse" id="collapseExample3" data-parent="#mygroup">
+				  					<div class="card card-body">
+				   						'.$nugedis.'
+				   						<a href="#" class="btn btn-outline-dark btn-sm"> 
+								    		<i class="far fa-eye"></i> Ver Mais
+								    	</a>
+				  					</div>
+								</div>
+							</div>
+						</div>	
+					</div>';
 
 			}
 		
 
-		if(empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] == 2){
+		/*if(empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] == 2){
 			//não faz nada
 		} else if ($_SESSION['tipo_usuario'] == 1){
 				echo '	
@@ -85,7 +143,7 @@
 						</div>
 					</div>
 				</div>';
-				}
+				} */
 				
 		$select_noticia = "SELECT * FROM noticia ORDER BY id_noticia DESC LIMIT 3";
 		$query_noticia = mysqli_query($conectar, $select_noticia);
@@ -97,20 +155,26 @@
 	    	$data_noticia      = $dados_noticia['data_noticia'];
 	    	$descricao_noticia = substr($dados_noticia['descricao_noticia'], 0, 125);
 
+
 	    	$select_arquivo = "SELECT * FROM arquivo_noticia 
 	    					   WHERE id_noticia = $id_noticia 
 	    					   ORDER BY id_arquivo_noticia ASC LIMIT 1";
 	    	$query_arquivo  = mysqli_query($conectar, $select_arquivo);
 
+	    	$rows = mysqli_num_rows($query_arquivo);
+
+	    	if($rows > 0) {
+
 	    	foreach ($query_arquivo as $dados_arquivo) {
+
 	    		$endereco_arquivo = $dados_arquivo['endereco_arquivo_noticia'];
 	    		$tipo_arquivo     = $dados_arquivo['tipo_arquivo_noticia'];	
 
-	    	   if($tipo_arquivo == 1){
-			   echo '
-			    
+				if($tipo_arquivo == 1){
+			  
+			   echo ' 
 		  			<div class="col mb-4">
-				    <div class="card shadow rounded">
+					    <div class="card shadow rounded">
 					      <img src="'.$endereco_arquivo.'" class="card-img-top" style=" width: 100%;
   						height: 250px;" alt="...">
 					      <div class="card-body text-center">
@@ -120,9 +184,51 @@
 					        </div>
 					    </div>
 			    </div>';
-			} 
-	    	}
-	    }
+			} else if($tipo_arquivo == 2){
+				echo ' 
+		  			<div class="col mb-4">
+					    <div class="card shadow rounded">
+					      <img src="./img/audio.png" class="card-img-top" style=" width: 100%;
+  						height: 250px;" alt="...">
+					      <div class="card-body text-center">
+					        <h5 class="card-title">'.$titulo_noticia.'</h5>
+					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        </div>
+					    </div>
+			    	</div>';
+
+			} else if($tipo_arquivo == 3){
+				echo ' 
+		  			<div class="col mb-4">
+					    <div class="card shadow rounded">
+					      <img src="./img/video.png" class="card-img-top" style=" width: 100%;
+  						height: 250px;" alt="...">
+					      <div class="card-body text-center">
+					        <h5 class="card-title">'.$titulo_noticia.'</h5>
+					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        </div>
+					    </div>
+			    	</div>';
+
+			}
+		}
+	    } else if ($rows == 0) {
+				echo ' 
+		  			<div class="col mb-4">
+					    <div class="card shadow rounded">
+					      <img src="./img/texto.png" class="card-img-top" style=" width: 100%;
+  						height: 250px;" alt="...">
+					      <div class="card-body text-center">
+					        <h5 class="card-title"> NI E DI </h5>
+					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        </div>
+					    </div>
+			    	</div>';
+			}
+	}
 	    echo "</div>";
 		
 		// Rodapé 

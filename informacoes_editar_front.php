@@ -10,16 +10,16 @@
 	} 
 
 	//Selecionando informações que quero editar.
-	$select_descricoes = "SELECT * FROM descricoes";
+	$select_descricoes = "SELECT * FROM descricao";
 	//Executando select.
 	$query_descricoes  = mysqli_query($conectar, $select_descricoes);
 
 		//percorrendo o array.
 		foreach ($query_descricoes as $dados_descricoes) {
-			$cai     = $dados_descricoes['descricao_cai'];
-			$napne   = $dados_descricoes['descricao_napne'];
-			$neabi   = $dados_descricoes['descricao_neabi'];
-			$nugedis = $dados_descricoes['descricao_nugedis'];
+			$cai     = $dados_descricoes['cai_descricao'];
+			$napne   = $dados_descricoes['napne_descricao'];
+			$neabi   = $dados_descricoes['neabi_descricao'];
+			$nugedis = $dados_descricoes['nugedis_descricao'];
 	    }
 ?>
 

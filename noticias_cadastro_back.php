@@ -29,10 +29,14 @@
         $id_noticia = $dados['id_noticia'];
 
         if(empty($noticia)){
+            
             //Se tiver vazia, não cadastra nada, senão aparece o "esqueleto" do vídeo por causa da $video.
         } else {
-            $video             = "https://www.youtube.com/embed/";  
-            $videonoticia      = substr($noticia, 32, -28);
+          
+            $video            = "https://www.youtube.com/embed/";  
+            $cortando         = explode( "&", $noticia);
+            $pegando          = $cortando[0];
+            $videonoticia     = substr($pegando, 32);
             $endereco_arquivo = $video.$videonoticia;
 
             $insert_arquivos = "INSERT INTO arquivo_noticia
@@ -122,8 +126,10 @@
         if(empty($noticia)){
             //Se tiver vazia, não cadastra nada, senão aparece o "esqueleto" do vídeo por causa da $video.
         } else {
-            $video             = "https://www.youtube.com/embed/";  
-            $videonoticia      = substr($noticia, 32, -27);
+            $video            = "https://www.youtube.com/embed/";  
+            $cortando         = explode( "&", $noticia);
+            $pegando          = $cortando[0];
+            $videonoticia     = substr($pegando, 32);
             $endereco_arquivo = $video.$videonoticia;
 
             //Bloco de código que pega o ID da notícia recem postada, para que o vídeo abaixo seja inserido com o ID correto.
@@ -133,10 +139,11 @@
             $id_noticia = $dados['id_noticia'];
 
             //Inserindo os Arquivos.
-            $insert_arquivos = "INSERT INTO arquivo_noticia
-                                        (id_noticia, endereco_arquivo_noticia, tipo_arquivo_noticia)
-                                    VALUES
-                                        ($id_noticia, '$endereco_arquivo', 3)";
+             $insert_arquivos = "INSERT INTO arquivo_noticia
+                                    (id_noticia, endereco_arquivo_noticia, tipo_arquivo_noticia)
+                                VALUES
+                                    ($id_noticia, '$endereco_arquivo', 3)";
+           
             //Query executando o insert.
             $query_arquivos = mysqli_query($conectar, $insert_arquivos);
             }

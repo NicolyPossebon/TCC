@@ -96,14 +96,12 @@
 
 		//foreach pra conseguir as infos da denuncia
 		foreach ($query as $denuncia) {
-			$id              = $denuncia['id_denuncia'];
+			echo $id              = $denuncia['id_denuncia'];
 			$titulo_denuncia = $denuncia['titulo_denuncia'];
 
-		//Listagem do titulo das denúncias.
+		    //Listagem do titulo das denúncias.
 			echo '
-
-
-				<div class="row">
+			<div class="row">
 					<div class="col-2 mr-0 pr-0">
 						<a  href="#" 
 		                    class="btn btn-outline-dark rounded-0 btn-block texto-login mb-2 text-center" 
@@ -127,8 +125,10 @@
   				<!-- Botões do CRUD. -->	
   				<div class="row mb-2 collapse" id="collapseExample'.$id.'">
   					<div class="col-6">
-						<a href="#"  
-						   class="btn btn-outline-warning texto-login btn-block">
+						<a href=""  
+						   class="btn btn-outline-warning texto-login btn-block"
+						   data-toggle="modal" data-target="#exampleModal" data-whateverid="'.$id.'"
+						   data-whatevertitulo="'.$titulo_denuncia.'">
 						<i class="fas fa-pen mr-1"></i>
 						Editar 
 						</a>
@@ -142,12 +142,36 @@
 						<i class="fas fa-trash ml-1"></i> 
 						</a>
 					</div>
+				</div>
 
-				</div>';
-
+				<!-- MODAL -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  						<div class="modal-dialog">
+    						<div class="modal-content">
+      							<div class="modal-header"> 
+       								<h5 class="modal-title" id="exampleModalLabel">Editar Denúncia</h5>
+        							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          								<span aria-hidden="true">&times;</span>
+        							</button>
+      							</div>
+      							<div class="modal-body">
+       								<form method="post" action="denuncia_edicao.php">
+          								<div class="form-group">
+								            <label for="recipient-name" class="col-form-label">Título da Denúncia</label>
+								            <input type="text" class="form-control" name="titulo_denuncia" id="recipienttitulo">
+								        </div>
+     										<input type="hidden" name="id_denun" id="recipientid">
+		     		      				<div class="modal-footer">
+									        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+									        <button type="submit" class="btn btn-primary">Editar</button>
+		      							</div>
+        							</form>
+							      </div>
+							    </div>
+							  </div>
+							</div>';
 		}//fim do foreach.
-						
-						
+							
 		//Se o usuário for adm...
 		} else if($_SESSION['tipo_usuario'] == 1){
 					
@@ -200,5 +224,19 @@
 				
 			});
 		});
+
+		//Função para editar com modal
+		$('#exampleModal').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var recipientid     = button.data('whateverid') // Extract info from data-* attributes
+		  var recipienttitulo = button.data('whatevertitulo')
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var modal = $(this)
+		  modal.find('.modal-title').text('New message to ' + recipient)
+		  modal.find(#recipientid).val(recipientid)
+		  modal.find(#recipienttitulo).val(recipienttitulo)
+		})
+
 
     </script>

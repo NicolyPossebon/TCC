@@ -65,15 +65,17 @@
 	    					   ORDER BY id_arquivo_noticia ASC LIMIT 1";
 	    	$query_arquivo  = mysqli_query($conectar, $select_arquivo);
 
+	    	$rows = mysqli_num_rows($query_arquivo);
 
-	    	
+	    	if($rows > 0) {
 
 	    	foreach ($query_arquivo as $dados_arquivo) {
 	    		$endereco_arquivo = $dados_arquivo['endereco_arquivo_noticia'];
 	    		$tipo_arquivo     = $dados_arquivo['tipo_arquivo_noticia'];	
 
+
 	    	   if($tipo_arquivo == 1){
-			   echo ' 
+			   		echo ' 
 		  			<div class="col mb-4">
 					    <div class="card shadow rounded">
 					      <img src="'.$endereco_arquivo.'" class="card-img-top" style=" width: 100%;
@@ -84,9 +86,9 @@
 					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
 					        </div>
 					    </div>
-			    </div>';
-			} else if($tipo_arquivo == 2){
-				echo ' 
+			    	</div>';
+				} else if($tipo_arquivo == 2){
+					echo ' 
 		  			<div class="col mb-4">
 					    <div class="card shadow rounded">
 					      <img src="./img/audio.png" class="card-img-top" style=" width: 100%;
@@ -99,8 +101,8 @@
 					    </div>
 			    	</div>';
 
-			} else if($tipo_arquivo == 3){
-				echo ' 
+				} else if($tipo_arquivo == 3){
+					echo ' 
 		  			<div class="col mb-4">
 					    <div class="card shadow rounded">
 					      <img src="./img/video.png" class="card-img-top" style=" width: 100%;
@@ -112,11 +114,25 @@
 					        </div>
 					    </div>
 			    	</div>';
-
-			}else{
+				}
+				} 
+			} else if ($rows == 0) {
+				echo ' 
+		  			<div class="col mb-4">
+					    <div class="card shadow rounded">
+					      <img src="./img/texto.png" class="card-img-top" style=" width: 100%;
+  						height: 250px;" alt="...">
+					      <div class="card-body text-center">
+					        <h5 class="card-title"> NI E DI </h5>
+					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        </div>
+					    </div>
+			    	</div>';
+			}
 			
-	    	}
-	    }
+	    	
+	    
 	    }
 
 	    

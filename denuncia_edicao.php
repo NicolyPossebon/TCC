@@ -4,14 +4,12 @@
 	include("conectar.php");
 
 	//recebendo dados do formulário.
-	$id_denuncia        = $_POST['id'];   
-	$titulo_denuncia    = $_POST['titulo_denuncia'];
-	$anonimato_denuncia = $_POST['anonimato_denuncia'];
+	echo $id_denuncia        = $_POST['id_denun'];   
+	echo $titulo_denuncia    = $_POST['titulo_denuncia'];
 
 	//atualizando no banco.
 	$update_denuncia = "UPDATE denuncia 
-						SET titulo_denuncia = '$titulo_denuncia',
-						    anonimato_denuncia = $anonimato_denuncia
+						SET titulo_denuncia = '$titulo_denuncia'
 						WHERE id_denuncia = $id_denuncia";
 	//executando o camando update.
 	$query_denuncia = mysqli_query($conectar, $update_denuncia);
@@ -20,5 +18,5 @@
 	mysqli_close($conectar);
 
 	//redirecionando.
-	header("location:ouvidoria_front.php");
+	//header("location:ouvidoria_front.php");
 ?>

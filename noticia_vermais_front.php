@@ -54,96 +54,105 @@
 		?>
 
 		<div class="container">
-			<div class="row justify-content-center mb-5 pt-2 mt-2 bg-primary ">
-				<div class="col-sm-12 col-md-10 col-lg-10 p-3 mt-4 rounded-lg text-center bg-success">
+			<div class="row justify-content-center mb-5 pt-2 mt-2 ">
+				<div class="col-sm-12 col-md-10 col-lg-10 p-3 mt-4 rounded-lg text-center">
 
-					<!-- Título -->
+					<!-- TÍTULO -->
 					<div class="row">
 						<div class="col">
 							<p class="titulo text-center"><?php echo $titulo_noticia; ?></p>
 						</div>
 					</div>
 					
-					<!-- Data -->
+					<!-- DATA -->
 					<div class="row">
 						<div class="col">
 							<p class="text-left data">Publicado em <?php echo substr($data_noticia, 0, 16) ?></p>
 						</div>
 					</div>
 
-					<!-- Foto -->
+					<!-- MÍDIAS -->
 					<?php
-						//Select pegando todos os arquivos relacionados a notícia.
-						$select_arquivo = "SELECT * FROM arquivo_noticia WHERE id_noticia = $id_noticia";
+						//Select pegando todos os arquivos do tipo 1 (foto0.
+						$select_foto = "SELECT * FROM arquivo_noticia WHERE id_noticia = $id_noticia and tipo_arquivo_noticia = 1";
 
 						//Query executando o select.
-						$query_arquivo = mysqli_query($conectar, $select_arquivo);
+						$query_foto = mysqli_query($conectar, $select_foto);
 
-							//Foreach percorrendo os dados.
-							foreach ($query_arquivo as $tipo) {
+						//contando o número de retornos.
+						$rows = mysqli_num_rows($query_foto);
+
+						//Se houver algum, faz o carrossel.
+						if($rows >= 1){
 								
-								//Se for == 1, é foto, logo o carrousel é implementado.
-								if($tipo['tipo_arquivo_noticia'] == 1){
-									
-									echo ' 
-									<div class="row">
-										<div class="col">
-											<div id="carouselExampleControls" class="carousel slide"              data-ride="carousel">
-											  	<div class="carousel-inner"> ';
+							echo ' 
+								<div class="row">
+									<div class="col">
+										<div id="carouselExampleControls" class="carousel slide"              data-ride="carousel">
+											<div class="carousel-inner"> ';
 
-											  		//
-												  	foreach($query_arquivo as $key => $midia){
-												  		
-												  		if($key == 0){
-			               									echo "
+											  	//
+											  	foreach($query_foto as $key => $midia){
+											  		
+											  		if($key == 0){	
+			               								echo "
 			               									<div class='carousel-item active'>
 			               										<img src='".$midia['endereco_arquivo_noticia']."' class='d-block w-100'></img>
 			                 								</div> ";			
 			             								} else {
+			             									echo $key;
 			                								echo "
 			                								<div class='carousel-item'>
 			                									<img src='".$midia['endereco_arquivo_noticia']."' class='d-block w-100'></img>
 			                 								</div> ";		
 			              								}
-
 												  	}
-													echo'   
-													
-													  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-													    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-													    <span class="sr-only">Previous</span>
-													  </a>
-													  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+											echo'   		
+												<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+													<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+													<span class="sr-only">Previous</span>
+												</a>
+												<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
 													    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 													    <span class="sr-only">Next</span>
-													  </a>
-												</div>
+												</a>
 											</div>
 										</div>
-									</div> '; 
+									</div>
+								</div> '; 
+							} 
 
-								// Se o tipo == 2, Áudio;
-								
+							//OBS: separei as consultas de foto das de áudio e vídeo pois estava acontecendo um erro na key do foreach. O problema só acontecia quando havia mais de um tipo de mídia, por isso pensei em separar as consultas e deu certo.
 
-							} else if ($tipo['tipo_arquivo_noticia'] == 2){
+							//Select puxando todos os tipos, menos o 1 que é foto.
+							$select_arquivos = "SELECT * FROM arquivo_noticia
+												WHERE id_noticia = $id_noticia and tipo_arquivo_noticia != 1";
+
+							//Query executando.
+							$query_arquivos = mysqli_query($conectar, $select_arquivos);
+
+							//Foreach percorrendo.
+							foreach ($query_arquivos as $tipoarquivos) {
+							
+								//2 = Aúdio.
+								if ($tipoarquivos['tipo_arquivo_noticia'] == 2){
 		               				echo "
 		                 				<div class='row'>
-		                 					<div class='col bg-danger'>
+		                 					<div class='col'>
 		                 						<br>
 		                 							<audio preload='none' controls='controls'>
-		                         			  			<source src='".$tipo['endereco_arquivo_noticia']."'/>
+		                         			  			<source src='".$tipoarquivos['endereco_arquivo_noticia']."'/>
 		                        			 		</audio> <br>
 		                        			 	<br>
 		                        			</div>
 		                        		</div>";
 	              			
-	              				//Se o tipo == 3, vídeo
-	              				} else if($tipo['tipo_arquivo_noticia'] == 3){	
-										
+	              				//3 = Vídeo.
+	              				} else if($tipoarquivos['tipo_arquivo_noticia'] == 3){		
 									echo '
 										<div class="row mt-3">
 											<div class="col">
-												<iframe width="560" height="315" src="'.$tipo['endereco_arquivo_noticia'].'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+												<iframe width="560" height="315" src="'.$tipoarquivos['endereco_arquivo_noticia'].'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 												</iframe>
 											</div>
 										</div>';
@@ -152,21 +161,19 @@
 						?>
 
 					
-					<!-- Descrição -->
+					<!-- DESCRIÇÃO -->
 					<div class="row">
 						<div class="col">
 							<p class="texto text-justify"><?php echo $descricao_noticia; ?></p>
 						</div>
 					</div>
 
-
+					<!-- BOTÕES -->
 					<?php 
-
 						if(empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] == 2){
-							//faz nada
+							//Se eu coloco pra testar $_SESSION['tipo_usuario'] == 1, que seria o adm, quando não a session, ou seja, quando não há ninguém logado, apresenta erro.
 						} else {
 							echo '
-								<!-- Botões -->
 								<div class="row">
 									<div class="col text-center">
 							 			<a class="btn rounded vermelho botoes" href="noticias_editar_front.php?id_noticia='.$id_noticia.'">
@@ -191,7 +198,7 @@
 		
 
 		<script type="text/javascript">
-			//Função para aparecer a caixinha de confiramção para excluir a denuncia
+		//Função para aparecer a caixinha de confiramção para excluir a denuncia
 		  $(document).ready(function(){
 			$('a[data-confirm]').click(function(ev){
 				var href = $(this).attr('href');
@@ -206,7 +213,7 @@
 		});
 		</script>
 		
-
+		<!-- RODAPÉ -->
 		<?php
 			include("rodape.php");
 		?>

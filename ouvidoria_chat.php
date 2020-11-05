@@ -4,7 +4,6 @@
 	// O teste é feito para que, sempre que um usuário entrar, ele não ver o erro.
 	if(empty($_GET['id'])){
 
-		
 		echo '
 
 			<div class="row mt-5">
@@ -32,6 +31,7 @@
 
 	} else {
 
+		//ESSA PARTE FAZ O CABEÇALHO
 		//Id da denuncia.
 		$id_denuncia = $_GET['id'];
 
@@ -59,7 +59,8 @@
 			foreach ($query_usuario as $usuario) {
 				$email_usuario = $usuario['email_usuario'];
 				$nome_usuario  = $usuario['nome_usuario'];
-			
+				
+				//Imprime as informações na tela.
 				echo '
 					<div class="row mb-3">
 						<div class="col bg-success text-left">
@@ -77,8 +78,10 @@
 				';
 			}
 
+		//Se não for renomada, ou seja, anônima
 		} else {
 
+				//Imprime o texto padrão
 				echo '
 					<div class="row mb-3">
 						<div class="col bg-success text-left">
@@ -94,9 +97,9 @@
 						</div>
 					</div>
 				';
-
 		}
 
+		//PARTE QUE LISTA O CHAT
 		//Selecionando todas as mensagens da denuncia do id vindo por get 
 		//e executanto com o mysqli_query
 		$select_mensagens = "SELECT * FROM mensagem WHERE id_denuncia = $id_denuncia";
@@ -137,6 +140,7 @@
 		foreach ($query_arquivos as $arquivos) {
 			$endereco_arquivo = $arquivos['endereco_arquivo_denuncia'];
 			$tipo_arquivo     = $arquivos['tipo_arquivo_denuncia'];
+			$data_arquivo     = $arquivos['data_arquivo_denuncia'];
 			$id_usuario       = $arquivos['id_usuario'];
 
 			if($id_usuario == $_SESSION['id_usuario']){
@@ -182,7 +186,8 @@
 
 		}
 
-	echo '
+		//PARTE DO CADASTRO DAS MENSGANS E ARQUIVOS
+		echo '
 			<!-- Formulário de Mensagem -->
 			<form method="post" action="denuncia_mensagem_cadastro.php" enctype="multipart/form-data">
 				<div class="row aling-itens-center" style="height: 500px;">

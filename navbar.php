@@ -12,10 +12,16 @@
 					</a>
 					<ul class='navbar-nav ml-auto mt-2 mt-lg-0'>
 						<li class='nav-item'>
-						    <a class='nav-link text-white' href='noticias_listagem.php'>Notícias</a>
+						    <a class='nav-link text-white' href='noticias_listagem.php'>
+						    Notícias
+						    <i class='fas fa-newspaper'></i> 
+						    </a>
 						</li>
 						<li class='nav-item rounded vermelho'>
-						    <a class='nav-link text-dark' href='usuario_login_front.php'>Ouvidoria</a>
+						    <a class='nav-link text-dark' href='usuario_login_front.php'>
+						    Ouvidoria
+						    <i class='fas fa-headphones-alt'> </i>
+						    </a>
 						</li>
 					</ul>
 				</div>

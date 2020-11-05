@@ -10,11 +10,11 @@
 	$nugedis = $_POST['descricao_nugedis'];
 
 	//atualizando no banco.
-	$update_descricoes = "UPDATE descricoes 
-						  SET descricao_cai     = '$cai ', 
-							  descricao_napne   = '$napne', 
-							  descricao_neabi   = '$neabi', 
-							  descricao_nugedis = '$nugedis' 
+	$update_descricoes = "UPDATE descricao 
+						  SET cai_descricao     = '$cai ', 
+							  napne_descricao   = '$napne', 
+							  neabi_descricao   = '$neabi', 
+							  nugedis_descricao = '$nugedis' 
 						  WHERE id_descricao    = 1";
 	//executando o comando uptade.
 	$query_descricoes = mysqli_query($conectar, $update_descricoes);
