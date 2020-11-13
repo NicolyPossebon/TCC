@@ -5,14 +5,13 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Notícias</title>
+	<head>
+		<title>Notícias</title>
 
 		<!-- Meta tag Obrigatória -->
 		<meta charset="utf-8">
 		<!-- Meta tag responsiva -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 		<!-- Link Bootstrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 		<!-- Link dos Icons -->
@@ -25,99 +24,107 @@
 		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Katibeh&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 
+	</head>
+	<body>
 
-</head>
-<body>
-
-	
 	<?php
 		// NAVBAR 
 		include_once("navbar.php");
 
-
+		// Teste para verificar se o usuário logado é adm, pois aí há o botão de cadastro de notícias.
 		if(empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] == 2){
-			//não faz nada
+			// não faz nada.
 		} else if ($_SESSION['tipo_usuario'] == 1){
-		echo '	
-		<div class="container">
-			<div class="row justify-content-center">
-  				<div class="col-10 mb-1 mt-4 ">
-  					<a href="noticias_cadastro_front.php" class="btn botoes-texto texto-buttons cinza shadow btn-lg btn-block" style="font-size: 20px;">
-  						Cadastrar Nova Notícia
-  					</a>
+			// coloca o button.
+			echo '	
+			<div class="container">
+				<div class="row justify-content-center">
+	  				<div class="col-10 mb-1 mt-4 ">
+	  					<a href="noticias_cadastro_front.php" class="btn botoes-texto texto-buttons cinza shadow btn-lg btn-block" style="font-size: 20px;">
+	  						Cadastrar Nova Notícia
+	  					</a>
+					</div>
 				</div>
-			</div>
-		</div>';
+			</div>';
 		}
 
-		
-
+		//Selecionando todas as noticias, das mais recentes para as mais antigas.
 		$select_noticia = "SELECT * FROM noticia ORDER BY id_noticia DESC";
+
+		//executando o select.
 		$query_noticia = mysqli_query($conectar, $select_noticia);
 
 		echo '<div class="row row-cols-1 row-cols-md-3 mb-5 pt-3 mr-3 ml-3">';
+
+		//foreach percorrendo os dados da tabela.
 	    foreach ($query_noticia as $dados_noticia) {
 	    	$id_noticia        = $dados_noticia['id_noticia'];
 	        $titulo_noticia    = $dados_noticia['titulo_noticia'];
 	    	$data_noticia      = $dados_noticia['data_noticia'];
 	    	$descricao_noticia = substr($dados_noticia['descricao_noticia'], 0, 125);
 
+	    	//Selecionando os arquivos referentes a noticia da rodada do foreach.
 	    	$select_arquivo = "SELECT * FROM arquivo_noticia 
 	    					   WHERE id_noticia = $id_noticia 
 	    					   ORDER BY id_arquivo_noticia ASC LIMIT 1";
+
+	    	//executando o select_arquivo
 	    	$query_arquivo  = mysqli_query($conectar, $select_arquivo);
 
+	    	//tranformando em numero de retornos.
 	    	$rows = mysqli_num_rows($query_arquivo);
 
 	    	if($rows > 0) {
 
-	    	foreach ($query_arquivo as $dados_arquivo) {
-	    		$endereco_arquivo = $dados_arquivo['endereco_arquivo_noticia'];
-	    		$tipo_arquivo     = $dados_arquivo['tipo_arquivo_noticia'];	
+		    	foreach ($query_arquivo as $dados_arquivo) {
+		    		$endereco_arquivo = $dados_arquivo['endereco_arquivo_noticia'];
+		    		$tipo_arquivo     = $dados_arquivo['tipo_arquivo_noticia'];	
 
-
-	    	   if($tipo_arquivo == 1){
-			   		echo ' 
-		  			<div class="col mb-4">
-					    <div class="card shadow rounded">
-					      <img src="'.$endereco_arquivo.'" class="card-img-top" style=" width: 100%;
-  						height: 250px;" alt="...">
-					      <div class="card-body text-center">
-					        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
-					        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
-					        </div>
-					    </div>
-			    	</div>';
-				} else if($tipo_arquivo == 2){
-					echo ' 
-		  			<div class="col mb-4">
-					    <div class="card shadow rounded">
-					      <img src="./img/audio.png" class="card-img-top" style=" width: 100%;
-  						height: 250px;" alt="...">
-					      <div class="card-body text-center">
-					        <h5 class="card-title">'.$titulo_noticia.'</h5>
-					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
-					        </div>
-					    </div>
-			    	</div>';
-
-				} else if($tipo_arquivo == 3){
-					echo ' 
-		  			<div class="col mb-4">
-					    <div class="card shadow rounded">
-					      <img src="./img/video.png" class="card-img-top" style=" width: 100%;
-  						height: 250px;" alt="...">
-					      <div class="card-body text-center">
-					        <h5 class="card-title">'.$titulo_noticia.'</h5>
-					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
-					        </div>
-					    </div>
-			    	</div>';
-				}
-				} 
+		    		//Se foi 1 = imagem.
+		    	    if($tipo_arquivo == 1){
+				   		echo ' 
+			  			<div class="col mb-4">
+						    <div class="card shadow rounded">
+						      <img src="'.$endereco_arquivo.'" class="card-img-top" style=" width: 100%;
+	  						height: 250px;" alt="...">
+						      <div class="card-body text-center">
+						        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
+						        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
+						        </div>
+						    </div>
+				    	</div>';
+				    //Se for 2 = audio.
+					} else if($tipo_arquivo == 2){
+						echo ' 
+			  			<div class="col mb-4">
+						    <div class="card shadow rounded">
+						      <img src="./img/audio.png" class="card-img-top" style=" width: 100%;
+	  						height: 250px;" alt="...">
+						      <div class="card-body text-center">
+						        <h5 class="card-title">'.$titulo_noticia.'</h5>
+						        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
+						        </div>
+						    </div>
+				    	</div>';
+				    //Se for 3 = vídeo.
+					} else if($tipo_arquivo == 3){
+						echo ' 
+			  			<div class="col mb-4">
+						    <div class="card shadow rounded">
+						      <img src="./img/video.png" class="card-img-top" style=" width: 100%;
+	  						height: 250px;" alt="...">
+						      <div class="card-body text-center">
+						        <h5 class="card-title">'.$titulo_noticia.'</h5>
+						        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
+						        </div>
+						    </div>
+				    	</div>';
+					}
+				}// fim do foreach
+			//Siginifa que é texto.
 			} else if ($rows == 0) {
 				echo ' 
 		  			<div class="col mb-4">
@@ -131,17 +138,12 @@
 					        </div>
 					    </div>
 			    	</div>';
-			}
-			
-	    	
-	    
+			} 
 	    }
-
-	    
 	    echo '</div>';
 	?>
 
-	<!-- RODAPÉ -->
+	<!-- rodapé -->
 	<?php
 		include_once("rodape.php");
 	?>

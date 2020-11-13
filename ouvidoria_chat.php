@@ -187,18 +187,18 @@
 
 		//PARTE DO CADASTRO DAS MENSGANS E ARQUIVOS
 		echo '
+			<hr>
 			<!-- Formulário de Mensagem -->
 			<form method="post" action="denuncia_mensagem_cadastro.php" enctype="multipart/form-data">
-				<div class="row aling-itens-center" style="height: 500px;">
+				<div class="row aling-itens-center ml-1 mr-1">
 					
 					<!-- Input Messagem -->
-				    <div class="col-5 m-0 p-0">
-				    	<input type="text" 
+				    <div class="col-7 m-0 p-0">
+				    	<input type="text" required
 				    		   name="texto_mensagem" 
 				    		   placeholder="Digite Aqui sua Mensagem!"
-				    		   class="form-control footer rounded"
-				    		   style="position:absolute; bottom:0; width: 100%;"
-				    		   required>
+				    		   class="form-control rounded border texto-corpo">
+				    		   <!--style="position:absolute; bottom:0; width: 100%;" -->
 				    </div>
 				
 
@@ -207,16 +207,16 @@
 
 				    <!-- Input Arquivo -->
 				    	
-							<div class="form-grup col-4 mb-3"> 
+							<div class="form-grup col-3 mb-3"> 
 								<input type="file" class="form-control" name="foto[]" multiple id="imagem" onchange="previewImagem()">
 							</div>			        		
 							        	
 					<!-- Button -->
 					<div class="col-2 m-0 p-0">
 							<input type="submit" 
-							       class="footer form-control texto-login btn rounded-0" 
-							       name="Enviar"
-							       style="position:absolute; bottom:0; background-color: #f35753">
+							       class=" form-control texto-buttons text-white btn rounded" 
+							       name="ENVIAR"
+							       style="background-color: #f35753; text-transform: uppercase;">
 
 					</div>
 				</div>

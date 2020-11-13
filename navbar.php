@@ -104,11 +104,11 @@
 						        <i class='fas fa-user-cog'></i>
 					        </a>
 					        <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-					          <a class='dropdown-item text-white dropdown-texto ' href='usuario_edita_front.php'>
+					          <a class='dropdown-item text-white dropdown-texto texto-corpo' href='usuario_edita_front.php'>
 					          	Editar Dados
 					          	<i class='fas fa-user-edit'></i>
 					          </a>
-					          <a class='dropdown-item text-white dropdown-texto' href='usuario_excluir_front.php'>
+					          <a class='dropdown-item text-white dropdown-texto texto-corpo' href='usuario_excluir_front.php'>
 					          	Excluir Conta
 					          	<i class='fas fa-user-times'></i>
 					          </a>

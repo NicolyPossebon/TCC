@@ -68,7 +68,7 @@
 								        	</button>
 							     		</div>
 							      		<div class="modal-body">
-							      			<p class="text-justify"><?php echo $descricoes['cai_descricao'];?></p>
+							      			<p class="text-justify texto-corpo"><?php echo $descricoes['cai_descricao'];?></p>
 							       			<br><img class="text-center" src="./img/cai/cai.png">
 							      		</div>
 									      <div class="modal-footer">
@@ -94,24 +94,24 @@
 					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 						    <div class="modal-content">
-						  		<div class="modal-header">
-						        	<h5 class="modal-title" id="exampleModalLabel">Edite as Informações!</h5>
+						  		<div class="modal-header text-center">
+						        	<h5 class="modal-title texto-corpo"  id="exampleModalLabel">EDITE AS DESCRIÇÕES!</h5>
 						        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						          		<span aria-hidden="true">&times;</span>
 						        	</button>
 						     	</div>
-						      	<div class="modal-body">
+						      	<div class="modal-body texto-corpo">
 						       		<form action="informacoes_editar_back.php" method="post">    
-										<label for="#">Descrição CAI</label>
+										<label for="#" class="texto-buttons">CAI</label>
 										<input type="text" class="form-control" name="descricao_cai" value="<?php echo $descricoes['cai_descricao']; ?>"  placeholder="" required data-length="10">
-										<label for="#">Descrição NAPNE</label>
+										<label for="#" class="texto-buttons">NAPNE</label>
 										<input type="text" class="form-control" name="descricao_napne" value="<?php echo $descricoes['napne_descricao']; ?>"  placeholder="" required data-length="10">
-										<label for="#">Descrição NEABI</label>
+										<label for="#" class="texto-buttons">NEABI</label>
 										<input type="text" class="form-control" name="descricao_neabi" value="<?php echo $descricoes['neabi_descricao']; ?>"  placeholder="" required data-length="10">
-										<label for="#">Descrição NUGEDIS</label>
+										<label for="#" class="texto-buttons">NUGEDIS</label>
 										<input type="text" class="form-control" name="descricao_nugedis" value="<?php echo $descricoes['nugedis_descricao']; ?>"  placeholder="" required data-length="10">
-										 <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">Close</button>
-							        	<button type="submit" class="btn btn-primary mt-2">Send message</button>
+										 <button type="button" class="btn mt-2 texto-buttons text-white" style="background-color: #f35753" data-dismiss="modal">CANCELAR</button>
+							        	<button type="submit" class="btn mt-2 texto-buttons text-white" style="background-color: #3CB371;">CONFIRMAR</button>
 						       		</form>
 						      	</div>
 						    </div>
@@ -177,7 +177,7 @@
 								        	</button>
 							     		</div>
 							      		<div class="modal-body">
-							      			<p class="text-justify"><?php echo $descricoes['napne_descricao'];?></p>
+							      			<p class="text-justify texto-corpo"><?php echo $descricoes['napne_descricao'];?></p>
 							       			<br><img class="text-center" src="./img/napne/bandeira_napne.png">
 							      		</div>
 									      <div class="modal-footer">
@@ -204,7 +204,7 @@
 								        	</button>
 							     		</div>
 							      		<div class="modal-body">
-							      			<p class="text-justify"><?php echo $descricoes['neabi_descricao'];?></p>
+							      			<p class="text-justify texto-corpo"><?php echo $descricoes['neabi_descricao'];?></p>
 							       			<br><img class="text-center" src="./img/neabi/bandeira_neabi.png">
 							      		</div>
 									      <div class="modal-footer">
@@ -232,7 +232,7 @@
 								        	</button>
 							     		</div>
 							      		<div class="modal-body">
-							      			<p class="text-justify"><?php echo $descricoes['nugedis_descricao'];?></p>
+							      			<p class="text-justify texto-corpo"><?php echo $descricoes['nugedis_descricao'];?></p>
 							       			<br><img class="text-center" src="./img/nugedis/banderia_nugedis.png">
 							      		</div>
 									      <div class="modal-footer">

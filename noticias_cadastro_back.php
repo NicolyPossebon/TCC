@@ -10,7 +10,7 @@
 	$data_noticia      = date("Y/m/d H:i:s");
     $noticia           = $_POST['video_noticia'];
   
-    //Se a $_FILES não estiver vazia......
+    //Se a $_FILES não estiver vazia...
 	if(!empty($_FILES['foto']['tmp_name'][0])){
 
 		//Incerção dos dados na tabela notícia.

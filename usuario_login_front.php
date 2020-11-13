@@ -42,13 +42,13 @@
 								<i class="fas fa-user fa-4x mb-2 mt-4"></i>
 								 <?php 
 									  if(isset($_SESSION['erros'])) {
-									  		echo "<div class='alert alert-success' role='alert'>";
+									  		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
 											echo $_SESSION['erros'];
 											echo "</div>";
 										}
 
 										if(isset($_SESSION['acertos'])){
-											echo "<div class='alert alert-success' role='alert'>";
+											echo "<div class='alert alert-success texto-corpo' style='font-size: 15px;' role='alert'>";
 											echo $_SESSION['acertos'];
 											echo "</div>";
 										}
@@ -60,33 +60,33 @@
 						<!-- Email -->
 						<div class="row justify-content-center">
 							<div class="col-sm-9 col-md-8 col-lg-7 text-center mb-3">
-								<label for="#">Email</label>
-								<input type="text" class="form-control" id="#" name="email_usuario">
+								<label for="#" class="texto-corpo">Email</label>
+								<input type="text" class="form-control texto-corpo" id="#" name="email_usuario">
 							</div>
 						</div>   
 
 						<!-- Senha -->
 						<div class="row justify-content-center">
 							<div class="col-sm-9 col-md-8 col-lg-7 mb-3">
-								<center><label for="#">Senha</label></center>
+								<center><label for="#" class="texto-corpo">Senha</label></center>
 							    <input type="password" class="form-control" id="#" name="senha_usuario">
-							    <a href="#">Esqueceu a senha?</a>
+							    <a href="#" class="texto-corpo">Esqueceu a senha?</a>
 							</div>
 						</div>
 
 						<!-- Botão -->
 						<div class="row justify-content-center">
 					    	<div class="col-sm-9 col-md-8 col-lg-7 text-center mb-2">
-								<input type="submit" class="btn text-white" style="background-color: #3CB371;" value="Entrar"> 
+								<input type="submit" class="btn text-white texto-corpo texto-buttons" style="background-color: #3CB371;" value="ENTRAR"> 
 							</div>
 						</div>
 
 						<!-- Cadastro -->
 						<div class="row justify-content-center">
-					    	<div class="col-sm-9 col-md-8 col-lg-7 text-center mb-4">
+					    	<div class="col-sm-9 col-md-8 col-lg-7 text-center mb-4 texto-corpo">
 						    	<hr>
 								Ainda não tem cadastro? 
-								<a href="usuario_cadastro_front.php">
+								<a href="usuario_cadastro_front.php" class="texto-corpo">
 									Cadastre-se aqui!
 								</a>
 							</div>
@@ -104,9 +104,6 @@
 
   		<!-- Icons -->
   		<script type="text/javascript" src="icons/js/all.js"></script> 
-  	    <!-- Tamplete -->
-    	<script src="vendor/jquery/jquery.min.js"></script>
-    	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	    <!-- Bootstrap: jQuery, Popper.js, Plugin JS  -->
 	    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

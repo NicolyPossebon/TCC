@@ -19,7 +19,7 @@
 
 			   		<!-- Redes Socias -->
 			   		<div class="col-sm-5 col-mb-5 col-lg-4 text-center mt-3">
-		                <h4  class = "mb-2 text-white pt-3texto-corpo" style="font-size: 20px;"> REDES SOCIAIS </h4 >
+		                <h4  class = "mb-2 text-white pt-3 texto-corpo" style="font-size: 20px;"> REDES SOCIAIS </h4 >
 		                <hr class="hr-vermelho">
 		                    <!-- Facebook -->
 		                    <a class ="mb-1 mr-2 btn btn-light rounded-circle" href =""> 

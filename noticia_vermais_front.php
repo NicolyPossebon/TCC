@@ -1,5 +1,5 @@
 <?php
-	
+	//session + banco.
 	session_start();
 	include_once("conectar.php");
 
@@ -12,48 +12,37 @@
 	//Query executando o select.
 	$query_noticia = mysqli_query($conectar, $select_noticia);
 
-	//Foreach percorrendo elas;
-	foreach ($query_noticia as $dados_noticia) {
-		$titulo_noticia    = $dados_noticia['titulo_noticia'];
-		$descricao_noticia = $dados_noticia['descricao_noticia'];
-		$data_noticia      = $dados_noticia['data_noticia'];	
-	}
-
+	//Transformando os dados da noticia em array.
+	$noticia = mysqli_fetch_assoc($query_noticia);
 ?>
 
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
 	<head>
+		<title>Notícias</title>
 
-		<title>Notícia X</title>
-
-			<!-- Meta tag Obrigatória -->
-		    <meta charset="utf-8">
-		    <!-- Meta tag responsiva -->
-		    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-		    <!-- Link Bootstrap -->
-		    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-		    <!-- Link dos Icons -->
-		    <link rel="stylesheet" type="text/css" href="icons/css/all.css">
-		    <!-- CSS -->
-		    <link rel="stylesheet" type="text/css" href="./css/style.css">
-			<!-- Fontes -->
-			<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-			<!-- JQuery -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-			<!-- Fontes -->
-			<link href = "https://fonts.googleapis.com/css2? family = Montserrat + Subrayada: wght @ 700 & family = Nanum + Gothic & family = Open + Sans & family = Playball & family = Roboto: ital, wght @ 1.900 & display = swap "rel =" stylesheet ">
-			<link href="https://fonts.googleapis.com/css2?family=Katibeh&family=Roboto:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Katibeh&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+		<!-- Meta tag Obrigatória -->
+		<meta charset="utf-8">
+	    <!-- Meta tag responsiva -->
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <!-- Link Bootstrap -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+	    <!-- Link dos Icons -->
+	    <link rel="stylesheet" type="text/css" href="icons/css/all.css">
+	    <!-- CSS -->
+	    <link rel="stylesheet" type="text/css" href="./css/style.css">
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- Fontes -->
+		<link href = "https://fonts.googleapis.com/css2? family = Montserrat + Subrayada: wght @ 700 & family = Nanum + Gothic & family = Open + Sans & family = Playball & family = Roboto: ital, wght @ 1.900 & display = swap "rel =" stylesheet ">
+		<link href="https://fonts.googleapis.com/css2?family=Katibeh&family=Roboto:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Katibeh&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 
 	</head>
 	<body>			
 
+		<!-- navbar -->
 		<?php
 			include("navbar.php");
 		?>
@@ -65,20 +54,21 @@
 					<!-- TÍTULO -->
 					<div class="row">
 						<div class="col">
-							<p class="titulo text-center texto-titulo"><?php echo $titulo_noticia; ?></p>
+							<p class="titulo text-center texto-titulo" style=" text-transform: uppercase; font-weight: 700;"><?php echo $noticia['titulo_noticia'];?></p>
 						</div>
 					</div>
 					
 					<!-- DATA -->
 					<div class="row">
 						<div class="col">
-							<p class="text-left data">Publicado em <?php echo substr($data_noticia, 0, 16) ?></p>
+							<p class="text-left data texto-corpo">Publicado em <?php echo substr($noticia['data_noticia'], 0, 16) ?></p>
 						</div>
 					</div>
 
 					<!-- MÍDIAS -->
 					<?php
-						//Select pegando todos os arquivos do tipo 1 (foto0.
+
+						//Select pegando todos os arquivos do tipo 1 (foto).
 						$select_foto = "SELECT * FROM arquivo_noticia WHERE id_noticia = $id_noticia and tipo_arquivo_noticia = 1";
 
 						//Query executando o select.
@@ -127,7 +117,7 @@
 								</div> '; 
 							} 
 
-							//OBS: separei as consultas de foto das de áudio e vídeo pois estava acontecendo um erro na key do foreach. O problema só acontecia quando havia mais de um tipo de mídia, por isso pensei em separar as consultas e deu certo.
+							//OBS: foi necessário separar as consultas de foto das de áudio e vídeo pois estava acontecendo  erro na key do foreach. O problema só acontecia quando havia mais de um tipo de mídia, por isso separei as consultas e deu certo.
 
 							//Select puxando todos os tipos, menos o 1 que é foto.
 							$select_arquivos = "SELECT * FROM arquivo_noticia
@@ -169,7 +159,7 @@
 					<!-- DESCRIÇÃO -->
 					<div class="row">
 						<div class="col">
-							<p class="texto text-justify"><?php echo $descricao_noticia; ?></p>
+							<p class="texto text-justify texto-corpo"><?php echo $noticia['descricao_noticia'];?></p>
 						</div>
 					</div>
 
@@ -181,15 +171,15 @@
 							echo '
 								<div class="row">
 									<div class="col text-center">
-							 			<a class="btn rounded vermelho botoes" href="noticias_editar_front.php?id_noticia='.$id_noticia.'">
+							 			<a class="btn rounded botoes texto-buttons text-white" style="background-color: #3CB371;" href="noticias_editar_front.php?id_noticia='.$id_noticia.'">
 											<i class="far fa-edit fa-1x"></i> 		
-											Editar		
+											EDITAR		
 										</a>
-							 			<a class="btn rounded vermelho botoes" 
+							 			<a class="btn rounded vermelho botoes texto-buttons text-white" 
 							 			   href="noticia_excluir_back.php?id='.$id_noticia.'" 
 							 			   data-confirm="Tem certeza que deseja excluir o item selecionado?">
 							 				<i class="far fa-trash-alt fa-1x"></i>
-							 				Excluir
+							 				EXCLUIR
 							 			</a>
 									</div>
 								</div>
@@ -203,12 +193,12 @@
 		
 
 		<script type="text/javascript">
-		//Função para aparecer a caixinha de confiramção para excluir a denuncia
+		//Função para aparecer a caixinha de confiramção para excluir a denuncia.
 		  $(document).ready(function(){
 			$('a[data-confirm]').click(function(ev){
 				var href = $(this).attr('href');
 				if(!$('#confirm-delete').length){
-					$('body').append('<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header bg-danger text-white">EXCLUIR ITEM<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">Tem certeza de que deseja excluir esta denúncia?</div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button><a class="btn btn-danger text-white" id="dataComfirmOK">Apagar</a></div></div></div></div>');
+					$('body').append('<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header texto-buttons">EXCLUIR ITEM<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body texto-corpo">Tem certeza de que deseja excluir esta denúncia?</div><div class="modal-footer"><button type="button" class="btn texto-buttons text-white" style="background-color: #3CB371" data-dismiss="modal">CANCELAR</button><a class="btn texto-buttons text-white" style="background-color: #f35753" id="dataComfirmOK">APAGAR</a></div></div></div></div>');
 				}
 				$('#dataComfirmOK').attr('href', href);
 		        $('#confirm-delete').modal({show: true});
