@@ -12,24 +12,25 @@
 
 	//Listando as informações obtidas no select
 	echo '
-		<div class="row">
-			<div class="col text-center">
-				<i class="fas fa-user-circle fa-6x mt-3"></i>
+		<div class="row ">
+			<div class="col text-center mb-3 mt-1">
+				<i class="far fa-user fa-5x mt-3"></i>
+				
 			</div>
 		</div>
 		<div class="row">
-			<div class="col text-center">
+			<div class="col text-center texto-corpo">
 				'.$informacoes_usuario['nome_usuario'].'
 			</div>
 		</div>
 		<div class="row">
-			<div class="col text-center">
+			<div class="col text-center texto-corpo">
 				'.$informacoes_usuario['email_usuario'].'
 				<hr>
 			</div>
 		</div>
-
 	';
+
 
     //BOTÃO DE CADASTRO + FORM DE CADASTRO DA DENU
 
@@ -43,7 +44,8 @@
 				<div class="col">
 					<button type="button" 
 							id="mostrar-form" 
-							class="btn btn-lg btn-block btn-outline-success texto-login mt-2 mb-2"> 
+							class="btn rounded-0 btn-lg btn-block texto-login mt-2 mb-2"
+							style="background-color: #3CB371;">
 						<i class="fas fa-plus mr-2"></i>
 					    Cadastrar Denúncia
 					</button>
@@ -96,7 +98,7 @@
 
 		//foreach pra conseguir as infos da denuncia
 		foreach ($query as $denuncia) {
-			echo $id              = $denuncia['id_denuncia'];
+			$id              = $denuncia['id_denuncia'];
 			$titulo_denuncia = $denuncia['titulo_denuncia'];
 
 		    //Listagem do titulo das denúncias.
@@ -104,7 +106,8 @@
 			<div class="row">
 					<div class="col-2 mr-0 pr-0">
 						<a  href="#" 
-		                    class="btn btn-outline-dark rounded-0 btn-block texto-login mb-2 text-center" 
+		                    class="btn rounded-0 btn-block texto-login mt-2 mb-2 text-center" 
+		                     style="background-color: #716D6D;"
 		                    data-toggle="collapse" 
 						    data-target="#collapseExample'.$id.'"
 			                role="button" 
@@ -115,8 +118,9 @@
 		            </div>
 						              
 					<div class="col-10 ml-0 pl-0">
-						<a  href="ouvidoria_front.php?id='.$id.'" 
-						    class="btn btn-outline-dark btn-block rounded-0 texto-login mb-2 text-center">
+						<a  href="ouvidoria_front.php?id='.$id.'"
+							style="background-color: #716D6D;"
+						    class="btn rounded-0 btn-block texto-login mb-2 mt-2 text-center">
 						    '.$titulo_denuncia.'
 						</a>
 		           </div>		
@@ -126,7 +130,7 @@
   				<div class="row mb-2 collapse" id="collapseExample'.$id.'">
   					<div class="col-6">
 						<a href=""  
-						   class="btn btn-outline-warning texto-login btn-block"
+						   class="btn btn-warning btn-block texto-login text-white"
 						   data-toggle="modal" data-target="#exampleModal" data-whateverid="'.$id.'"
 						   data-whatevertitulo="'.$titulo_denuncia.'">
 						<i class="fas fa-pen mr-1"></i>
@@ -136,7 +140,7 @@
 									
 					<div class="col-6">
 						<a href="denuncia_excluir.php?id='.$id.'"
-						   class="btn btn-block texto-login btn-outline-danger"
+						   class="btn btn-block texto-login btn-danger"
 						   data-confirm="Tem certeza que deseja excluir essa denúncia?">
 						Excluir
 						<i class="fas fa-trash ml-1"></i> 
@@ -192,7 +196,8 @@
 					<div class="row">
 						<div class="col">
 							<a  href="ouvidoria_front.php?id='.$id.'" 
-						        class="btn btn-outline-dark btn-block texto-login mb-2 text-center">
+						        style="background-color: #716D6D;"
+						    	class="btn rounded-0 btn-block texto-login mb-2 mt-2 text-center">
 						        '.$titulo_denuncia.'
 			                </a>
   						</div>
@@ -225,7 +230,7 @@
 			});
 		});
 
-		//Função para editar com modal
+		/*Função para editar com modal
 		$('#exampleModal').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
 		  var recipientid     = button.data('whateverid') // Extract info from data-* attributes
@@ -236,7 +241,7 @@
 		  modal.find('.modal-title').text('New message to ' + recipient)
 		  modal.find(#recipientid).val(recipientid)
 		  modal.find(#recipienttitulo).val(recipienttitulo)
-		})
+		}) */
 
 
     </script>

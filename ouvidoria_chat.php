@@ -6,14 +6,14 @@
 
 		echo '
 
-			<div class="row mt-5">
+			<div class="row mt-5 texto-corpo">
 			 	<div class="col text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
 					Olá, seja bem vindo a nossa ouvidoria!
 				</div>
 			</div>
 
 			<div class="row mt-5 justify-content-center ">
-			 	<div class="col-8 text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
+			 	<div class="col-8 text-center text-dark font-weight-bold texto-corpo" style="font-size: 1.2rem;">
 				        Lorem Ipsum é simplesmente um texto fictício da indústria de impressão e composição.
 				        LoremIpsum tem sido o texto fictício padrão da indústria desde os anos 1500, quando um 
 				        mpressor desconhecido pegou uma galé do tipo e embaralhou para fazer um livro de amostra
@@ -22,7 +22,7 @@
 			</div>
 
 			<div class="row mt-5 justify-content-center ">
-			 	<div class="col-8 text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
+			 	<div class="col-8 texto-corpo text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
 				       Por isso, você pode se sentir a vontade em denúnciar! Estaremos ouvindo.
 				</div>
 			</div>
@@ -62,17 +62,16 @@
 				
 				//Imprime as informações na tela.
 				echo '
-					<div class="row mb-3">
-						<div class="col bg-success text-left">
-						'.$email_usuario.'<br>'.$nome_usuario.'
+					<div class="row p-3 align-items-center" style="background-color: #716D6D">
+						<div class="col text-left text-white" style="text-transform: uppercase; font-weight: 650;">
+						'.$nome_usuario.'
 						</div>
 
-						<div class="col bg-danger text-center">
-						'.$titulo_denuncia.'
+						<div class="col text-left text-white text-center" style="background-color: #3CB371; text-transform: uppercase; font-weight: 700;">'.$titulo_denuncia.'
 						</div>
 
-						<div class="col bg-primary text-right">
-						A denuncia realizada em <br> '.$data_denuncia.'
+						<div class="col text-right text-white" style="text-transform: uppercase; font-weight: 650;">
+						'.$data_denuncia.'
 						</div>
 					</div>
 				';
@@ -83,17 +82,17 @@
 
 				//Imprime o texto padrão
 				echo '
-					<div class="row mb-3">
-						<div class="col bg-success text-left">
+					<div class="row p-3 align-items-center" style="background-color: #716D6D">
+						<div class="col text-left text-white" style="text-transform: uppercase; font-weight: 650;">
 							Denuncia Anônima
 						</div>
 
-						<div class="col bg-danger text-align-middle text-center">
+						<div class="col text-left text-white text-center" style="background-color: #3CB371; text-transform: uppercase; font-weight: 700;">
 						'.$titulo_denuncia.'
 						</div>
 
-						<div class="col bg-primary justify-content-end text-right">
-						A denuncia realizada em <br> '.$data_denuncia.'
+						<div class="col text-right text-white" style="text-transform: uppercase; font-weight: 650;">
+						'.$data_denuncia.'
 						</div>
 					</div>
 				';
@@ -114,18 +113,18 @@
 
 			if($id_usuario == $_SESSION['id_usuario']){
 				echo '
-					<div class="row justify-content-end">
+					<div class="row justify-content-end mt-1">
 						<div class="col-6 text-right mb-1">
-							<div class="d-inline-flex p-3 vermelho rounded-left">
+							<div class="d-inline-flex p-3 vermelho rounded-left texto-corpo" style="background-color: #f35753">
 						 		'.$texto_mensagem.'
 						 	</div>
 				        </div>
 				    </div>';
 			} else {
 				echo '
-					<div class="row justify-content-start">
+					<div class="row justify-content-start mt-1">
 						<div class="col-6 mb-1 text-left">
-							<div class="d-inline-flex p-3 verde rounded-right">
+							<div class="d-inline-flex p-3 verde rounded-right texto-corpo">
 								'.$texto_mensagem.'
 							</div>
 						</div>
@@ -148,7 +147,7 @@
 					echo '
 					<div class="row justify-content-end">
 						<div class="col-6 text-right mb-1">
-								<img src="'.$endereco_arquivo.'"" class="d-block w-100"></img>";
+								<img src="'.$endereco_arquivo.'"" class="d-block w-100"></img>
 						</div>
 					</div>';
 
@@ -193,31 +192,32 @@
 				<div class="row aling-itens-center" style="height: 500px;">
 					
 					<!-- Input Messagem -->
-				    <div class="col-10 m-0 p-0">
+				    <div class="col-5 m-0 p-0">
 				    	<input type="text" 
 				    		   name="texto_mensagem" 
-				    		   class="form-control footer rounded-0"
+				    		   placeholder="Digite Aqui sua Mensagem!"
+				    		   class="form-control footer rounded"
 				    		   style="position:absolute; bottom:0; width: 100%;"
 				    		   required>
 				    </div>
-				</div>
+				
 
 				    <!-- Hiddem pro ID Denuncia -->
 					<input type="hidden" name="id_denuncia" value="'.$id_denuncia.'">
 
 				    <!-- Input Arquivo -->
-				    	<div class="form-row justify-content-center"> 
-							<div class="form-grup col-10 mb-3"> 
-								<label for="#">Mídia da Notícia</label>
+				    	
+							<div class="form-grup col-4 mb-3"> 
 								<input type="file" class="form-control" name="foto[]" multiple id="imagem" onchange="previewImagem()">
 							</div>			        		
 							        	
 					<!-- Button -->
 					<div class="col-2 m-0 p-0">
 							<input type="submit" 
-							       class="footer form-control texto-login btn btn-success rounded-0" 
+							       class="footer form-control texto-login btn rounded-0" 
 							       name="Enviar"
-							       style="position:absolute; bottom:0;">
+							       style="position:absolute; bottom:0; background-color: #f35753">
+
 					</div>
 				</div>
 

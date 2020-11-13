@@ -45,6 +45,11 @@
 			<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 			<!-- JQuery -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<!-- Fontes -->
+			<link href = "https://fonts.googleapis.com/css2? family = Montserrat + Subrayada: wght @ 700 & family = Nanum + Gothic & family = Open + Sans & family = Playball & family = Roboto: ital, wght @ 1.900 & display = swap "rel =" stylesheet ">
+			<link href="https://fonts.googleapis.com/css2?family=Katibeh&family=Roboto:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Katibeh&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 
 	</head>
 	<body>			
@@ -60,7 +65,7 @@
 					<!-- TÍTULO -->
 					<div class="row">
 						<div class="col">
-							<p class="titulo text-center"><?php echo $titulo_noticia; ?></p>
+							<p class="titulo text-center texto-titulo"><?php echo $titulo_noticia; ?></p>
 						</div>
 					</div>
 					

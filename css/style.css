@@ -1,3 +1,7 @@
+
+*{
+    box-sizing: border-box;;
+}
 body{
 	font-family: 'Lato';
 	margin: 0;
@@ -16,7 +20,6 @@ h6 {
   font-size: 1rem; /* Tamanho da Letra */
 
 }
-
 
 
 /* NAVBAR */
@@ -63,11 +66,11 @@ h6 {
 
 /* CORES */
 .verde{
-	background-color: #E4FBE5;
+	background-color: #3CB371;
 }
 
 .vermelho{
-	background-color: #FBD8D8;
+	background-color: #B22222;
 }
 
 .cinza{
@@ -162,4 +165,62 @@ h6 {
     text-transform: uppercase; /* Tudo Maiúsculo    */
 }
 
+
+header{
+    height: 100vh;
+    background: no-repeat center/cover url('./img/header2.jpg');
+}
+
+.header-content{
+    max-width: 700px;
+    margin: 170px auto;
+    text-align: center;
+}
+
+.texto-topicos{
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Playball', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-style: bolder;
+    font-weight: 650;
+    font-size: 40px;
+    letter-spacing: 0.0005px;
+}
+
+.texto-subtopicos{
+    font-family: 'Katibeh', cursive;
+    font-family: 'Roboto', sans-serif;
+    color: #696969;
+    font-style: oblique;
+    font-weight: 500px;
+    
+}
+
+.texto-corpo{
+    font-family: 'Big Shoulders Display', cursive;
+    font-family: 'Katibeh', cursive;
+    font-family: 'Roboto', sans-serif;
+}
+
+.texto-titulo{
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Playball', cursive;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: underline #3CB371;
+    font-size: 25px;
+}
+
+.texto-buttons{
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Playball', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 650;
+}
 

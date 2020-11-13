@@ -6,10 +6,10 @@
                 				
                 	<!-- Localização -->
 			      	<div class="col-sm-5 col-mb-5 col-lg-4 text-center">
-			      		<h4 class="mb-2 text-white pt-3 rodape-titulo"> Endereço </h4>
+			      		<h4 class="mb-2 text-white pt-3 texto-corpo" style="font-size: 20px;"> ENDEREÇO </h4>
 			      		<hr class="hr-verde">
-                        <p class="lead mb-0 text-white text-justify rodape-texto">
-							Linha 7 de Setembro, BR 386 - KM 40 s/n - Centro, Frederico Westphalen - RS, 98400-000	
+                        <p class="lead mb-0 text-white text-justify texto-corpo" style="font-size: 17px;">
+							Linha 7 de Setembro, BR 386 - KM 40 s/n - Centro, Frederico Westphalen - RS, 98400-000.	
                         </p>
 			      	</div>
 
@@ -18,8 +18,8 @@
                 	</div>
 
 			   		<!-- Redes Socias -->
-			   		<div class="col-sm-5 col-mb-5 col-lg-4 text-center">
-		                <h4  class = "mb-2 text-white pt-3 rodape-titulo" > Redes Socias </h4 >
+			   		<div class="col-sm-5 col-mb-5 col-lg-4 text-center mt-3">
+		                <h4  class = "mb-2 text-white pt-3texto-corpo" style="font-size: 20px;"> REDES SOCIAIS </h4 >
 		                <hr class="hr-vermelho">
 		                    <!-- Facebook -->
 		                    <a class ="mb-1 mr-2 btn btn-light rounded-circle" href =""> 

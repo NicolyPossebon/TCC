@@ -20,8 +20,10 @@
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<!-- Fontes -->
-		<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+		<link href = "https://fonts.googleapis.com/css2? family = Montserrat + Subrayada: wght @ 700 & family = Nanum + Gothic & family = Open + Sans & family = Playball & family = Roboto: ital, wght @ 1.900 & display = swap "rel =" stylesheet ">
+		<link href="https://fonts.googleapis.com/css2?family=Katibeh&family=Roboto:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Katibeh&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 
 
 </head>
@@ -40,7 +42,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
   				<div class="col-10 mb-1 mt-4 ">
-  					<a href="noticias_cadastro_front.php" class="btn botoes-texto cinza shadow btn-lg btn-block">
+  					<a href="noticias_cadastro_front.php" class="btn botoes-texto texto-buttons cinza shadow btn-lg btn-block" style="font-size: 20px;">
   						Cadastrar Nova Notícia
   					</a>
 				</div>
@@ -81,9 +83,9 @@
 					      <img src="'.$endereco_arquivo.'" class="card-img-top" style=" width: 100%;
   						height: 250px;" alt="...">
 					      <div class="card-body text-center">
-					        <h5 class="card-title">'.$titulo_noticia.'</h5>
-					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
+					        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
 					        </div>
 					    </div>
 			    	</div>';
@@ -96,7 +98,7 @@
 					      <div class="card-body text-center">
 					        <h5 class="card-title">'.$titulo_noticia.'</h5>
 					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
 					        </div>
 					    </div>
 			    	</div>';
@@ -110,7 +112,7 @@
 					      <div class="card-body text-center">
 					        <h5 class="card-title">'.$titulo_noticia.'</h5>
 					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
 					        </div>
 					    </div>
 			    	</div>';
@@ -125,7 +127,7 @@
 					      <div class="card-body text-center">
 					        <h5 class="card-title"> NI E DI </h5>
 					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn btn-outline-dark"> Ver mais</a>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
 					        </div>
 					    </div>
 			    	</div>';

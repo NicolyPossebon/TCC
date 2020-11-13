@@ -31,6 +31,11 @@
 			<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 			<!-- JQuery -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<!-- Fontes -->
+		<link href = "https://fonts.googleapis.com/css2? family = Montserrat + Subrayada: wght @ 700 & family = Nanum + Gothic & family = Open + Sans & family = Playball & family = Roboto: ital, wght @ 1.900 & display = swap "rel =" stylesheet ">
+		<link href="https://fonts.googleapis.com/css2?family=Katibeh&family=Roboto:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Katibeh&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 			
 	</head>
 	<body>
@@ -41,7 +46,7 @@
 
 		<div class="container-fluid mt-3 mb-3">
 			<div class="row justify-content-center">
-				<div class="col-lg-3 col-md-3 col-sm-10 border border-secondary mr-2 mb-3 bg-white" 
+				<div class="col-lg-3 col-md-3 col-sm-10 border mr-2 mb-3 bg-white rounded" 
 				     style="height: 500px; overflow: auto; position: relative">
 
 				    <?php
@@ -51,7 +56,7 @@
 				</div>
 
 				<!-- MENSAGENS DAS DENÚNCIAS -->
-				<div class="col-lg-8 col-md-8 col-sm-10 border border-secondary bg-white justify-content-center" 
+				<div class="col-lg-8 col-md-8 col-sm-10 border bg-white justify-content-center rounded" 
 				     style="height: 500px; position: relative; overflow: auto ">
 
 				    <?php
