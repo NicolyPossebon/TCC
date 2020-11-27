@@ -69,14 +69,15 @@
             
                     } else {
                         //Se não vai para a pasta
-                        echo "não foi possivel fazer o upload.";
+                        $_SESSION['erros'] = "Não foi possível cadastrar a mídia selecionada";
+                        header('location:ouvidoria_front.php?id='.$id_denuncia.'');
+                        exit;
                     }
 
             } else {
                 //Se não é das extenções permitidas
-                $_SESSION['arquivo_invalido'] = "O formato do arquivo é inválido!";
-                echo "Formato inválido";
-                header('location:noticias_cadastro_front.php');
+                $_SESSION['erros'] = "O formato do arquivo é inválido! Lembre-se, você só pode selecionar arquivos do tipo png, jpeg, jpg, mp3, ogg!";
+                header('location:ouvidoria_front.php?id='.$id_denuncia.'');
                 exit;
             }
 

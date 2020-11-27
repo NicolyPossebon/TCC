@@ -98,6 +98,25 @@
 				';
 		}
 
+						echo '<div class="row justify-content-center mt-4"> 
+							<div class="col-sm-9 col-md-8 col-lg-7 text-center"> ';
+								 
+									  if(isset($_SESSION['erros'])) {
+									  		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
+											echo $_SESSION['erros'];
+											echo "</div>";
+										}
+
+										if(isset($_SESSION['acertos'])){
+											echo "<div class='alert alert-success texto-corpo' style='font-size: 15px;' role='alert'>";
+											echo $_SESSION['acertos'];
+											echo "</div>";
+										}
+							     echo "
+								<hr>
+							</div>
+						</div>";
+
 		//PARTE QUE LISTA O CHAT
 		//Selecionando todas as mensagens da denuncia do id vindo por get 
 		//e executanto com o mysqli_query

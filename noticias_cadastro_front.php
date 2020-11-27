@@ -40,14 +40,38 @@
 		<div class="container texto-corpo">
 			<div class="row justify-content-center mb-5 pt-2 mt-2">
 				<div class="col-sm-12 col-md-10 col-lg-10 shadow-lg p-5 mt-4 rounded-lg bg-white">
-			
+					<div class="row d-flex justify-content-center mb-4">
+						<div class="col-6 text-center text-white" style="background-color: #3CB371; font-size: 1.5rem; text-transform: uppercase; font-weight: 700;">
+							Cadastre uma Notícia!
+						</div>
+					</div>
 					<form action="noticias_cadastro_back.php" method="post" enctype="multipart/form-data">
+
+						<!--Session -->
+						<div class="row justify-content-center"> 
+							<div class="col-sm-9 col-md-8 col-lg-7 text-center"> 
+								 <?php 
+									  if(isset($_SESSION['erros'])) {
+									  		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
+											echo $_SESSION['erros'];
+											echo "</div>";
+										}
+
+										if(isset($_SESSION['acertos'])){
+											echo "<div class='alert alert-success texto-corpo' style='font-size: 15px;' role='alert'>";
+											echo $_SESSION['acertos'];
+											echo "</div>";
+										}
+							     ?>
+								<hr>
+							</div>
+						</div>
 
 						<!-- Título da Notícia -->
 						<div class="form-row justify-content-center"> 
 							<div class="form-grup col-10 mb-3"> 
-								<label for="#">Título da Notícia</label>
-								<input type="text" class="form-control" name="titulo_noticia"  placeholder="" required data-length="10">
+								<label for="#">Título</label>
+								<input type="text" class="form-control border" name="titulo_noticia"  placeholder="" required data-length="10">
 							</div>
 						</div>
 
@@ -55,22 +79,22 @@
 						<div class="form-row justify-content-center"> 
 							<div class="form-grup col-10 mb-3"> 
 								<label for="#">Mídia da Notícia</label>
-								<input type="file" class="form-control" name="foto[]" multiple id="imagem" onchange="previewImagem()">
+								<input type="file" class="form-control border" name="foto[]" multiple id="imagem" onchange="previewImagem()">
 							</div>
 						</div>
 
-						<!-- Preview da Imagem -->
+						<!-- Preview da Imagem 
 						<div class="form-row justify-content-center"> 
 							<div class="form-grup col-10 mb-3 text-center"> 
 								<img class="img-fluid">
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Vídeo -->
 						<div class="form-row justify-content-center">
 							<div class="form-grup  mb-3 col-10">
 								<label for="#">Vídeo</label>
-								<input type="text" class="form-control" name="video_noticia"  placeholder=""  data-length="10">
+								<input type="text" class="form-control border" name="video_noticia"  placeholder=""  data-length="10">
 							</div>
 						</div>
 
@@ -79,7 +103,8 @@
 						<div class="form-row justify-content-center">
 							<div class="form-grup  mb-3 col-10">
 								<label for="#">Descrição</label>
-								<input type="text" class="form-control" name="descricao_noticia"  placeholder="" required data-length="10">
+								<br>
+								<textarea rows="5" cols="85" class="rounded border"  name="descricao_noticia"  placeholder="" required data-length="10"></textarea>
 							</div>
 						</div>
 

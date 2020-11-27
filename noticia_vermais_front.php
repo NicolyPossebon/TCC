@@ -198,7 +198,7 @@
 			$('a[data-confirm]').click(function(ev){
 				var href = $(this).attr('href');
 				if(!$('#confirm-delete').length){
-					$('body').append('<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header texto-buttons">EXCLUIR ITEM<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body texto-corpo">Tem certeza de que deseja excluir esta denúncia?</div><div class="modal-footer"><button type="button" class="btn texto-buttons text-white" style="background-color: #3CB371" data-dismiss="modal">CANCELAR</button><a class="btn texto-buttons text-white" style="background-color: #f35753" id="dataComfirmOK">APAGAR</a></div></div></div></div>');
+					$('body').append('<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header texto-buttons">EXCLUIR ITEM<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body texto-corpo">Tem certeza de que deseja excluir esta denúncia?</div><div class="modal-footer"><button type="button" class="btn texto-buttons text-white" style="background-color: #3CB371" data-dismiss="modal">CANCELAR</button><a class="btn texto-buttons text-white" style="background-color: #B22222" id="dataComfirmOK">APAGAR</a></div></div></div></div>');
 				}
 				$('#dataComfirmOK').attr('href', href);
 		        $('#confirm-delete').modal({show: true});

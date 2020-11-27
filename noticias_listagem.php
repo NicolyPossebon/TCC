@@ -90,7 +90,7 @@
 						      <div class="card-body text-center">
 						        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
 						        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
-						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho"> VER MAIS</a>
 						        </div>
 						    </div>
 				    	</div>';
@@ -104,7 +104,7 @@
 						      <div class="card-body text-center">
 						        <h5 class="card-title">'.$titulo_noticia.'</h5>
 						        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho"> VER MAIS</a>
 						        </div>
 						    </div>
 				    	</div>';
@@ -118,7 +118,7 @@
 						      <div class="card-body text-center">
 						        <h5 class="card-title">'.$titulo_noticia.'</h5>
 						        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho"> VER MAIS</a>
 						        </div>
 						    </div>
 				    	</div>';
@@ -134,7 +134,7 @@
 					      <div class="card-body text-center">
 					        <h5 class="card-title"> NI E DI </h5>
 					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons"  style="background-color: #f35753"> VER MAIS</a>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons vermelho text-white"> VER MAIS</a>
 					        </div>
 					    </div>
 			    	</div>';

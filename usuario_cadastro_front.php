@@ -109,7 +109,7 @@
 						<div class="row justify-content-center">
 							<div class="col-sm-11 col-md-10 col-lg-9 text-center">
 								<button type="submit" style="background-color: #f35753" class="btn text-white texto-buttons texto-corpo" onclick="return validar()">
-									ENVIAR
+									CADASTRAR
 								</button> 
 							</div>
 						</div>

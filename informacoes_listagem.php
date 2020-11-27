@@ -39,8 +39,8 @@
 
 			<div class="header-content">
 				<h1 style="font-family: 'Staatliches', cursive; font-size: 50px" class="text-white texto-topicos mt-3 mb-4"> BEM VINDO</h1>
-				<p class="text-white texto-corpo">Aqui você encontrará informações sobre a Coordenação de Ações Inclusivas e os núcleos do campus Frederico Whestphalen e os Núcelos que a compõe.</p>
-				<button class="btn mt-4 texto-buttons" style="background-color: #3CB371;" >SAIBA MAIS</button>
+				<p class="text-white texto-corpo" style="font-size: 1.5rem">Aqui você encontrará informações sobre a Coordenação de Ações Inclusivas do campus Frederico Whestphalen, além os Núcelos que a compõe.</p>
+				<button class="btn mt-4 texto-buttons text-white btn-lg" style="background-color: #3CB371; font-weight: 800" >SAIBA MAIS</button>
 			</div>
 		</header>
 
@@ -111,7 +111,7 @@
 										<label for="#" class="texto-buttons">NUGEDIS</label>
 										<input type="text" class="form-control" name="descricao_nugedis" value="<?php echo $descricoes['nugedis_descricao']; ?>"  placeholder="" required data-length="10">
 										 <button type="button" class="btn mt-2 texto-buttons text-white" style="background-color: #f35753" data-dismiss="modal">CANCELAR</button>
-							        	<button type="submit" class="btn mt-2 texto-buttons text-white" style="background-color: #3CB371;">CONFIRMAR</button>
+							        	<button type="submit" class="btn mt-2 texto-buttons text-white" style="background-color: #3CB371;">EDITAR</button>
 						       		</form>
 						      	</div>
 						    </div>
