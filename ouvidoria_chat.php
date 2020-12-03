@@ -2,30 +2,31 @@
 				
 	//Logo que o usuário entra no sistema, não há nenhuma mensagem escolhida, ou seja, nenhum id. 
 	// O teste é feito para que, sempre que um usuário entrar, ele não ver o erro.
-	if(empty($_GET['id'])){
+if(empty($_GET['id'])){
 
-		echo '
+	echo '
 
-			<div class="row mt-5 texto-corpo">
-			 	<div class="col text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
-					Olá, seja bem vindo a nossa ouvidoria!
-				</div>
+		<div class="row mt-5 ml-4 mr-4 justify-content-center" style="background-color: #3CB371; ">
+			<div class="col-6 texto-corpo text-center font-weight-bold" style="font-size: 1.2rem; background-color: #fff">
+				Olá, seja bem vindo a nossa ouvidoria! 
 			</div>
+		</div>
 
-			<div class="row mt-5 justify-content-center ">
-			 	<div class="col-8 text-center text-dark font-weight-bold texto-corpo" style="font-size: 1.2rem;">
-				        Lorem Ipsum é simplesmente um texto fictício da indústria de impressão e composição.
-				        LoremIpsum tem sido o texto fictício padrão da indústria desde os anos 1500, quando um 
-				        mpressor desconhecido pegou uma galé do tipo e embaralhou para fazer um livro de amostra
-				        de tipos.
-				</div>
+		<div class="row mt-5 justify-content-center ">
+			<div class="col-8 texto-corpo text-center text-dark" style="font-size: 1.2rem;">
+				Aqui, além de acessar as informações e notícias refentes a Coordenação de Ações Inclusiva (CAI) e ao núcleos, 
+				você também pode realizar denúncias. Para cadastrá-las, basta clicar no botão "Cadastrar Denuncia", em verde à 
+				sua esquerda. Optando pelo anônimato, sua denuncia será encaminha até o ouvidor e o mesmo não terá acesso aos 
+				seus dados.
 			</div>
+		</div>
 
-			<div class="row mt-5 justify-content-center ">
-			 	<div class="col-8 texto-corpo text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
-				       Por isso, você pode se sentir a vontade em denúnciar! Estaremos ouvindo.
-				</div>
+		<div class="row mt-5 justify-content-center ">
+			<div class="col-8 texto-titulo text-center text-dark font-weight-bold" style="font-size: 1.2rem;">
+				    Por isso, você pode se sentir a vontade em denúnciar! 
+				    <br> Estaremos ouvindo! 
 			</div>
+		</div>
 
 		';
 
@@ -101,106 +102,91 @@
 						echo '<div class="row justify-content-center mt-4"> 
 							<div class="col-sm-9 col-md-8 col-lg-7 text-center"> ';
 								 
-									  if(isset($_SESSION['erros'])) {
+									  if(isset($_SESSION['erros_formatos'])) {
 									  		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
-											echo $_SESSION['erros'];
-											echo "</div>";
-										}
-
-										if(isset($_SESSION['acertos'])){
-											echo "<div class='alert alert-success texto-corpo' style='font-size: 15px;' role='alert'>";
-											echo $_SESSION['acertos'];
+											echo $_SESSION['erros_formatos'];
 											echo "</div>";
 										}
 							     echo "
-								<hr>
+							
 							</div>
 						</div>";
 
 		//PARTE QUE LISTA O CHAT
-		//Selecionando todas as mensagens da denuncia do id vindo por get 
-		//e executanto com o mysqli_query
-		$select_mensagens = "SELECT * FROM mensagem WHERE id_denuncia = $id_denuncia";
-		$query_mensagens  = mysqli_query($conectar, $select_mensagens);
+		$select_mensagem = "SELECT * FROM mensagem WHERE id_denuncia = $id_denuncia";
+		$query_mensagem  = mysqli_query($conectar, $select_mensagem);
+		$rows_mensagem   = mysqli_num_rows($query_mensagem);
 
-		//foreach pegando as mensagens
-		foreach ($query_mensagens as $mensagens) {
-			$id_usuario     = $mensagens['id_usuario'];
-			$id_mensagem    = $mensagens['id_mensagem'];
-			$texto_mensagem = $mensagens['texto_mensagem'];
-			$data_mensagem  = $mensagens['data_mensagem'];
+		if($rows_mensagem >= 1){
 
-			if($id_usuario == $_SESSION['id_usuario']){
-				echo '
-					<div class="row justify-content-end mt-1">
-						<div class="col-6 text-right mb-1">
-							<div class="d-inline-flex p-3 vermelho rounded-left texto-corpo" style="background-color: #f35753">
-						 		'.$texto_mensagem.'
-						 	</div>
-				        </div>
-				    </div>';
-			} else {
-				echo '
-					<div class="row justify-content-start mt-1">
-						<div class="col-6 mb-1 text-left">
-							<div class="d-inline-flex p-3 verde rounded-right texto-corpo">
-								'.$texto_mensagem.'
+			foreach ($query_mensagem as $mensagem) {
+				$endereco_mensagem = $mensagem['endereco_mensagem'];
+				$tipo_mensagem     = $mensagem['tipo_mensagem'];
+				$data_mensagem     = $mensagem['data_mensagem'];
+				$id_usuario        = $mensagem['id_usuario'];
+
+				if($id_usuario == $_SESSION['id_usuario']){
+					if($tipo_mensagem == 0){
+						echo '
+						<div class="row justify-content-end mt-1">
+							<div class="col-6 mt-2 text-right">
+								<div class="d-inline-flex p-3 verde rounded-left texto-corpo">
+									'.$endereco_mensagem.'
+								</div>
 							</div>
-						</div>
-					</div>';
-			}
+						</div>';
 
-		}//fim do foreach
+					}elseif($tipo_mensagem == 1){
+						echo '
+						<div class="row justify-content-end">
+							<div class="col-6 text-right mt-2">
+									<img src="'.$endereco_mensagem.'"" class="d-block w-100"></img>
+							</div>
+						</div>';
 
-		$select_arquivos = "SELECT * FROM arquivo_denuncia WHERE id_denuncia = $id_denuncia";
-		$query_arquivos  = mysqli_query($conectar, $select_arquivos);
-
-		foreach ($query_arquivos as $arquivos) {
-			$endereco_arquivo = $arquivos['endereco_arquivo_denuncia'];
-			$tipo_arquivo     = $arquivos['tipo_arquivo_denuncia'];
-			$data_arquivo     = $arquivos['data_arquivo_denuncia'];
-			$id_usuario       = $arquivos['id_usuario'];
-
-			if($id_usuario == $_SESSION['id_usuario']){
-				if($tipo_arquivo == 1){
-					echo '
-					<div class="row justify-content-end">
-						<div class="col-6 text-right mb-1">
-								<img src="'.$endereco_arquivo.'"" class="d-block w-100"></img>
-						</div>
-					</div>';
-
+					} else {
+						echo "
+						<div class='row justify-content-end'>
+							<div class='col-6 text-right mt-2'>
+							<audio preload='none' controls='controls'>
+				                <source src='".$endereco_mensagem."'/>
+				              </audio>
+				            </div>
+				        </div>";
+					}
 				} else {
-					echo "
-					<div class='row justify-content-end'>
-						<div class='col-6 text-right mb-1'>
-						<audio preload='none' controls='controls'>
-			                <source src='".$endereco_arquivo."'/>
-			              </audio>
-			            </div>
-			        </div>";
-				}
-			} else {
-				if($tipo_arquivo == 1){
-					echo '
-					<div class="row justify-content-start">
-						<div class="col-6 text-left mb-1">
-								<img src="'.$endereco_arquivo.'"" class="d-block w-100"></img>
-						</div>
-					</div>';
+					if($tipo_mensagem == 0){
+						echo '
+						<div class = "row justify-content-start mt-1">
+							<div class = "col-6 mb-2 text-left">
+								<div class = "d-inline-flex p-3 vermelho rounded-right texto-corpo">
+									'.$endereco_mensagem.' 
+								</div>
+							</div>
+						</div> ';
+					}elseif($tipo_mensagem == 1){
+						echo '
+						<div class="row justify-content-start">
+							<div class="col-6 text-left mt-2">
+									<img src="'.$endereco_mensagem.'"" class="d-block w-100"></img>
+							</div>
+						</div>';
 
-				} else {
-					echo "
-					<div class='row justify-content-start'>
-						<div class='col-6 text-left mb-1'>
-						<audio preload='none' controls='controls'>
-			                <source src='".$endereco_arquivo."'/>
-			              </audio>
-			            </div>
-			        </div>";
+					} else {
+						echo "
+						<div class='row justify-content-start'>
+							<div class='col-6 text-left mt-2'>
+							<audio preload='none' controls='controls'>
+				                <source src='".$endereco_mensagem."'/>
+				              </audio>
+				            </div>
+				        </div>";
+					}
+
 				}
 
 			}
+		} else {
 
 		}
 
@@ -212,11 +198,11 @@
 				<div class="row aling-itens-center ml-1 mr-1">
 					
 					<!-- Input Messagem -->
-				    <div class="col-7 m-0 p-0">
+				    <div class="col-9 m-0 p-0">
 				    	<input type="text" required
 				    		   name="texto_mensagem" 
 				    		   placeholder="Digite Aqui sua Mensagem!"
-				    		   class="form-control rounded border texto-corpo">
+				    		   class="form-control rounded border-secondary texto-corpo">
 				    		   <!--style="position:absolute; bottom:0; width: 100%;" -->
 				    </div>
 				
@@ -226,8 +212,9 @@
 
 				    <!-- Input Arquivo -->
 				    	
-							<div class="form-grup col-3 mb-3"> 
-								<input type="file" class="form-control" name="foto[]" multiple id="imagem" onchange="previewImagem()">
+							<div class="form-grup col-1 mb-3"> 
+								<label for="imagem" class="btn text-white" style="background-color: #3CB371;"><i class="fas fa-folder-open"></i></label>
+								<input type="file" class="form-control" style="display: none;" name="foto[]" multiple id="imagem" onchange="previewImagem()">
 							</div>			        		
 							        	
 					<!-- Button -->
@@ -236,6 +223,7 @@
 							       class=" form-control texto-buttons text-white btn rounded" 
 							       name="ENVIAR"
 							       style="background-color: #f35753; text-transform: uppercase;">
+
 
 					</div>
 				</div>

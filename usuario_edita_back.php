@@ -50,10 +50,10 @@
 		$query = mysqli_query($conectar, $update);
 
 		//Apagando dados da session erros.
-		unset($_SESSION['erros']);
+		unset($_SESSION['erros_edicao_usuarios']);
 
 		//E atribuindo a session acertos.
-		$_SESSION['acertos'] = "Dados Alterados com Sucesso!";
+		$_SESSION['acertos_edicao_usuarios'] = "Dados Alterados com Sucesso!";
 
 		//fechando a conexão e redirecionando.
 	    mysqli_close($conectar);
@@ -61,15 +61,18 @@
 
 	//Se ambas derem maiores que 1, significa que há usuários com os dados já cadastrados.
 	} else if($row > 0 && $row2 > 0){
-		$_SESSION['erros'] = "Estes dados já estão cadastrados!";
+		unset($_SESSION['acertos_edicao_usuarios']);
+		$_SESSION['erros_edicao_usuarios'] = "Estes dados já estão cadastrados!";
 	    mysqli_close($conectar);
 	    header('location:usuario_edita_front.php');
 	} else if ($row > 0){
-		$_SESSION['erros'] = "Este email já está cadastrado!";
+		unset($_SESSION['acertos_edicao_usuarios']);
+		$_SESSION['erros_edicao_usuarios'] = "Este email já está cadastrado!";
 	    mysqli_close($conectar);
 		header('location:usuario_edita_front.php');
 	} else if ($row2 > 0){
-		$_SESSION['erros'] = "Este nome já está cadastrado!";
+		unset($_SESSION['acertos_edicao_usuarios']);
+		$_SESSION['erros_edicao_usuarios'] = "Este nome já está cadastrado!";
 	    mysqli_close($conectar);
 	    header('location:usuario_edita_front.php');
 	} 

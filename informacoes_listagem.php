@@ -31,7 +31,7 @@
 	</head>
 	<body>
 
-		<header>
+		<header style="height: 100vh; background: no-repeat center/cover url('./img/header2.jpg');">
 			<!-- Navbar -->
 			<?php
 				include_once('navbar.php')

@@ -40,6 +40,10 @@
 		//limpando as sessions
 		unset($_SESSION['erros']);
 		unset($_SESSION['acertos']);
+		unset($_SESSION['erros_noticias']);
+		unset($_SESSION['erros_formatos']);
+		unset($_SESSION['erros_cadastro']);
+		unset($_SESSION['acertos_cadastro']);
 
 		if($_SESSION['tipo_usuario'] == 2 ){ 
 			//usuario tipo 2 = usuário comum
@@ -55,7 +59,7 @@
 
 		} 
 		 
-	}else{
+	} else{
 		//Se row for =! 1, algo está errado
 		$_SESSION['erros'] = "Usuário e senha incorretos!";
 		//fechando a conexão do bd

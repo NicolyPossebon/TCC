@@ -21,26 +21,45 @@
 
 	//row == 1, dados bateram.
 	if ($row == 1){
-		//sql que deleta o usuario e suas denuncias.
+
+		$select_denuncia = "SELECT * FROM denuncia WHERE id_usuario = '$id_usuario'";
+		$query_select    = mysqli_query($conectar, $select_denuncia);
+
+		foreach ($query_select as $excluir) {
+			$id_denuncia = $excluir['id_denuncia'];
+
+			//sql que deleta o usuario e suas denuncias.
+			$delete_mensagem = "DELETE FROM mensagem WHERE id_denuncia = '$id_denuncia'";
+			$query_mensagem = mysqli_query($conectar, $delete_mensagem);
+
+			$delete_arquivos = "DELETE FROM arquivo_denuncia WHERE id_denuncia = '$id_denuncia'";
+			$query_arquivos = mysqli_query($conectar, $delete_arquivos);
+
+			$delete_denuncia = "DELETE FROM denuncia WHERE id_denuncia = '$id_denuncia'";
+			$query_denuncia = mysqli_query($conectar, $delete_denuncia);
+
+		}
+	
 		$delete_usuario  = "DELETE FROM usuario WHERE id_usuario = '$id_usuario'";
-		$delete_denuncia = "DELETE FROM denuncia WHERE id_usuario = '$id_usuario'";
-
-		//query que executa os sqls.
 		$query_usuario  = mysqli_query($conectar, $delete_usuario);
-		$query_denuncia = mysqli_query($conectar, $delete_denuncia);
 
+		
 		//destruindo sessions vinculadas ao usuário deletado.
 		session_destroy();
+
+		//Fecha a conexão
+		mysqli_close($conectar);
 
 		//redirecionando.
 		header('location:usuario_login_front.php');
 
 	//$row =! 1, algo está errado
 	} else {
-		$_SESSION['erros'] = "Não foi possivel deletar sua conta, tente novamente";
+		$_SESSION['erros_excluir_usuarios'] = "Não foi possivel deletar sua conta, tente novamente";
+		//Fecha a conexão
+		mysqli_close($conectar);
 		header('location:usuario_excluir_front.php');
+	
 	}
 
-	//Fecha a conexão
-	mysql_close($conectar);
 ?>

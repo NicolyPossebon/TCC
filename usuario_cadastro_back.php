@@ -25,14 +25,16 @@
 
 	//se a $row e $row2 não forem 0, significa que usuário á tem as infos cadastras
 	if ($row2 >= 1){
-		 $_SESSION['erros'] = "Este nome já está cadastrado!";
+		unset($_SESSION['acertos_cadastro_usuario']);
+		$_SESSION['erros_cadastro_usuario'] = "Este nome já está cadastrado!";
 
 		 //fechando a conexão do bd
 	     mysqli_close($conectar);
 
 		header('location:usuario_cadastro_front.php');
 	} else if ($row >= 1){
-		 $_SESSION['erros'] = "Este email já está cadastrado!";
+		unset($_SESSION['acertos_cadastro_usuario']);
+		$_SESSION['erros_cadastro_usuario'] = "Este email já está cadastrado!";
 
 		//fechando a conexão do bd
 	    mysqli_close($conectar);
@@ -48,8 +50,8 @@
 				 		('$nome_usuario', '$email_usuario', 2, '$senha_usuario')";
 
 		$query = mysqli_query($conectar, $insert);
-		unset($_SESSION['erros']);
-		$_SESSION['acertos'] = "Cadastro Realizado com Sucesso!";
+		unset($_SESSION['erros_cadastro_usuario']);
+		$_SESSION['acertos_cadastro_usuario'] = "Cadastro Realizado com Sucesso!";
 		//fechando a conexão do bd
 	    mysqli_close($conectar);
 		header('location:usuario_login_front.php');

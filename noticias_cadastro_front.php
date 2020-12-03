@@ -51,17 +51,12 @@
 						<div class="row justify-content-center"> 
 							<div class="col-sm-9 col-md-8 col-lg-7 text-center"> 
 								 <?php 
-									  if(isset($_SESSION['erros'])) {
+									  if(isset($_SESSION['erros_noticias'])) {
 									  		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
-											echo $_SESSION['erros'];
+											echo $_SESSION['erros_noticias'];
 											echo "</div>";
 										}
 
-										if(isset($_SESSION['acertos'])){
-											echo "<div class='alert alert-success texto-corpo' style='font-size: 15px;' role='alert'>";
-											echo $_SESSION['acertos'];
-											echo "</div>";
-										}
 							     ?>
 								<hr>
 							</div>

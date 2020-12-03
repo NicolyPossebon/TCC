@@ -95,7 +95,7 @@
 						<li class='nav-item '>
 						    <a class='nav-link text-white' href='noticias_listagem.php'>
 						    Notícias
-						    <i class='fas fa-headphones-alt'> </i>
+						    <i class='fas fa-newspaper'></i> 
 						    </a>
 						</li>
 						<li class='nav-item dropdown'>

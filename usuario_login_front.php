@@ -60,7 +60,7 @@
 						<!-- Email -->
 						<div class="row justify-content-center">
 							<div class="col-sm-9 col-md-8 col-lg-7 text-center mb-3">
-								<label for="#" class="texto-corpo">Email</label>
+								<label for="#" class="texto-corpo">Email </label>
 								<input type="text" class="form-control texto-corpo" id="#" name="email_usuario">
 							</div>
 						</div>   
@@ -68,9 +68,9 @@
 						<!-- Senha -->
 						<div class="row justify-content-center">
 							<div class="col-sm-9 col-md-8 col-lg-7 mb-3">
-								<center><label for="#" class="texto-corpo">Senha</label></center>
+								<center><label for="#" class="texto-corpo">Senha </label></center>
 							    <input type="password" class="form-control" id="#" name="senha_usuario">
-							    <a href="#" class="texto-corpo">Esqueceu a senha?</a>
+							    <a href="usuario_recuperacao_senha.php" class="texto-corpo">Esqueceu a senha?</a>
 							</div>
 						</div>
 

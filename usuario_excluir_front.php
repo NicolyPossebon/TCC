@@ -47,9 +47,9 @@
 							<div class="col-sm-11 col-md-10 col-lg-9 text-center"> 
 								<i class="fas fa-user-times fa-4x mb-2"></i>
 								 <?php 
-									  if(isset($_SESSION['erros'])) {
+									  if(isset($_SESSION['erros_excluir_usuarios'])) {
 									  		echo "<div class='alert alert-danger' role='alert'>";
-											echo $_SESSION['erros'];
+											echo $_SESSION['erros_excluir_usuarios'];
 											echo "</div>";
 										}
 

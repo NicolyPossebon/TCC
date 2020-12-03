@@ -85,15 +85,15 @@
 							<div class="col-sm-11 col-md-10 col-lg-9 text-center"> 
 								<i class="fa fa-users fa-4x margin mb-1" aria-hidden="true"></i>
 								 <?php 
-									  if(isset($_SESSION['erros'])) {
+									  if(isset($_SESSION['erros_edicao_usuarios'])) {
 									  		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
-											echo $_SESSION['erros'];
+											echo $_SESSION['erros_edicao_usuarios'];
 											echo "</div>";
 										}
 
-										if(isset($_SESSION['acertos'])){
+										if(isset($_SESSION['acertos_edicao_usuarios'])){
 											echo "<div class='alert alert-success texto-corpo' style='font-size: 15px' role='alert'>";
-											echo $_SESSION['acertos'];
+											echo $_SESSION['acertos_edicao_usuarios'];
 											echo "</div>";
 										}
 							     ?>

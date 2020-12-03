@@ -63,11 +63,19 @@
 							<div class="col-sm-11 col-md-10 col-lg-9 text-center"> 
 								<i class="fa fa-users fa-4x margin mb-1" aria-hidden="true"></i>
 								 <?php 
-									  if(isset($_SESSION['erros'])) {
+										if(isset($_SESSION['erros_cadastro_usuario'])) {
 									  		echo "<div class='alert alert-danger texto-corpo' role='alert'>";
-											echo $_SESSION['erros'];
+											echo $_SESSION['erros_cadastro_usuario'];
 											echo "</div>";
 										}
+
+										if(isset($_SESSION['acertos_cadastro_usuario'])){
+											echo "<div class='alert alert-success texto-corpo' role='alert'>";
+											echo $_SESSION['acertos_cadastro_usuario'];
+											echo "</div>";
+										}
+
+
 							     ?>
 								<hr>
 							</div>

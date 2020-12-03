@@ -79,13 +79,13 @@
 				    $query_insert = mysqli_query($conectar, $insert_arquivos);
 
 		        } else {
-			            $_SESSION['erros'] = "Não foi possível realizar o cadastro. Tente novamente!";
+			            $_SESSION['erros_noticias'] = "Não foi possível realizar o cadastro. Tente novamente!";
                         header('location:noticias_editar_front.php');
                         exit;
 			        }
 
 			}else{
-			   $_SESSION['erros'] = "O formato do arquivo é inválido! Lembre-se, você só pode selecionar arquivos do tipo png, jpeg, jpg, mp3, ogg!";
+			   $_SESSION['erros_noticias'] = "O formato do arquivo é inválido! Lembre-se, você só pode selecionar arquivos do tipo png, jpeg, jpg, mp3, ogg!";
                 header('location:noticias_editar_front.php?id_noticia='.$id_noticia.'');
                 exit;
 			}

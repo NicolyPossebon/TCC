@@ -128,14 +128,16 @@
 
   				<!-- Botões do CRUD. -->	
   				<div class="row mb-2 collapse" id="collapseExample'.$id.'">
-  					<div class="col-6">
-						<a href=""  
-						   class="btn btn-warning btn-block texto-login text-white"
-						   data-toggle="modal" data-target="#exampleModal" data-whateverid="'.$id.'"
-						   data-whatevertitulo="'.$titulo_denuncia.'">
-						<i class="fas fa-pen mr-1"></i>
-						Editar 
-						</a>
+
+	  				<div class="col-6">
+						<button type="button" 
+								class="btn btn-warning btn-block texto-login text-white"
+								data-toggle="modal" 
+								data-target="#exampleModal" 
+								data-whateverid="'.$id.'"
+								data-whatevertitulo="'.$titulo_denuncia.'">
+							Editar <i class="fas fa-pen mr-1"></i>
+						</button>
 					</div>
 									
 					<div class="col-6">
@@ -146,34 +148,7 @@
 						<i class="fas fa-trash ml-1"></i> 
 						</a>
 					</div>
-				</div>
-
-				<!-- MODAL -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  						<div class="modal-dialog">
-    						<div class="modal-content">
-      							<div class="modal-header"> 
-       								<h5 class="modal-title" id="exampleModalLabel">Editar Denúncia</h5>
-        							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          								<span aria-hidden="true">&times;</span>
-        							</button>
-      							</div>
-      							<div class="modal-body">
-       								<form method="post" action="denuncia_edicao.php">
-          								<div class="form-group">
-								            <label for="recipient-name" class="col-form-label">Título da Denúncia</label>
-								            <input type="text" class="form-control" name="titulo_denuncia" id="recipienttitulo">
-								        </div>
-     										<input type="hidden" name="id_denun" id="recipientid">
-		     		      				<div class="modal-footer">
-									        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-									        <button type="submit" class="btn btn-primary">Editar</button>
-		      							</div>
-        							</form>
-							      </div>
-							    </div>
-							  </div>
-							</div>';
+				</div>';
 		}//fim do foreach.
 							
 		//Se o usuário for adm...
@@ -209,14 +184,49 @@
 						
 ?>
 
+	<!-- Modal da Edição -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  	<div class="modal-header">
+			  		<h4 class="modal-title texto-buttons" id="exampleModalLabel">EDITAR TÍTULO</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			    </div>
+			  	<div class="modal-body">
+					<form method="POST" action="denuncia_edicao.php" enctype="multipart/form-data">
+				  		
+						<!-- Título -->
+				  		<div class="form-group">
+							<label for="recipient-name" class="control-label">Titulo:</label>
+							<input name="titulo" type="text" class="form-control" id="titulodenuncia">
+				 		</div>
+				  
+				  		<!-- id -->
+						<input name="id" type="hidden" class="form-control" id="iddenuncia" value="<?php echo $_GET['id']; ?>">
+				
+						<button type="button" data-dismiss="modal" class="btn texto-buttons text-white" style="background-color: #3CB371">CANCELAR</button>
+						<button type="submit" class="btn texto-buttons text-white" style="background-color: #f35753">EDITAR</button>
+			 
+					</form>
+			    </div>
+			  
+			</div>
+		</div>
+	</div>
+  	
+
+  	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
 	<script>
-		//Função toggle + evento click responsável
-		//pelo efeito do cadastro da denúncia
+		//FORMULÁRIO DE CAD
 		$("#mostrar-form").click(function () {
 			$("#cadastrar").toggle();
 		})
 
-		//Função para aparecer a caixinha de confiramção para excluir a denuncia
+		//MODAL EXCLUSÃO
 		  $(document).ready(function(){
 			$('a[data-confirm]').click(function(ev){
 				var href = $(this).attr('href');
@@ -229,19 +239,20 @@
 				
 			});
 		});
-
-		/*Função para editar com modal
+  
+		/*MODAL EDIÇÃO
 		$('#exampleModal').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
-		  var recipientid     = button.data('whateverid') // Extract info from data-* attributes
+		  var recipient = button.data('whateverid') // Extract info from data-* attributes
 		  var recipienttitulo = button.data('whatevertitulo')
 		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 		  var modal = $(this)
-		  modal.find('.modal-title').text('New message to ' + recipient)
-		  modal.find(#recipientid).val(recipientid)
-		  modal.find(#recipienttitulo).val(recipienttitulo)
+		  modal.find('.modal-title').text('ID ' + recipient)
+		  modal.find('#iddenuncia').val(recipient)
+		  modal.find('#titulodenuncia').val(recipienttitulo)
 		}) */
 
+		
 
     </script>

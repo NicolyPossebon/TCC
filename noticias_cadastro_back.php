@@ -93,14 +93,15 @@
             
                     } else {
                         //Se não vai para a pasta
-                        $_SESSION['erros'] = "Não foi possível realizar o cadastro. Tente novamente!";
+                        $_SESSION['erros_noticias'] = "Não foi possível realizar o cadastro. Tente novamente!";
                         header('location:noticias_cadastro_front.php');
                         exit;
                     }
 
             } else {
                 //Se não é das extenções permitidas
-                $_SESSION['erros'] = "O formato do arquivo é inválido! Lembre-se, você só pode selecionar arquivos do tipo png, jpeg, jpg, mp3, ogg!";
+                $_SESSION['erros_noticias'] = "O formato do arquivo é inválido! Lembre-se, você só pode selecionar arquivos do tipo png, jpeg, jpg, mp3, ogg!";
+                mysqli_close($conectar);
                 header('location:noticias_cadastro_front.php');
                 exit;
             }

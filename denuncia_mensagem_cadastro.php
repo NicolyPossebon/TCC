@@ -16,8 +16,8 @@
 
 		//inserindo no banco.
 		$insert_mensagem = "INSERT INTO mensagem 
-							(id_denuncia, id_usuario, data_mensagem, texto_mensagem)
-				     VALUES ($id_denuncia, $id_usuario, '$data_mensagem', '$mensagem_denuncia')";
+							(id_usuario, id_denuncia, data_mensagem, tipo_mensagem, endereco_mensagem)
+				     VALUES ($id_usuario, $id_denuncia, '$data_mensagem', 0, '$mensagem_denuncia')";
 		//executando o comando insert.
 		$query_mensagem = mysqli_query($conectar, $insert_mensagem);
 
@@ -61,22 +61,22 @@
        					}
 
                         //Incere os arquivos
-    				    $insert_arquivo = "INSERT INTO arquivo_denuncia 
-    				    				(id_usuario, id_denuncia, data_arquivo_denuncia, endereco_arquivo_denuncia, tipo_arquivo_denuncia) 
+    				    $insert_arquivo = "INSERT INTO mensagem
+    				    				(id_usuario, id_denuncia, data_mensagem, endereco_mensagem, tipo_mensagem) 
     				    			VALUES 
     				    				($id_usuario, $id_denuncia,'$data_mensagem', '$arquivo_insert', $tipo)";
     				    $query_arquivo = mysqli_query($conectar, $insert_arquivo);
             
                     } else {
                         //Se não vai para a pasta
-                        $_SESSION['erros'] = "Não foi possível cadastrar a mídia selecionada";
+                        $_SESSION['erros_formatos'] = "Não foi possível cadastrar a mídia selecionada";
                         header('location:ouvidoria_front.php?id='.$id_denuncia.'');
                         exit;
                     }
 
             } else {
                 //Se não é das extenções permitidas
-                $_SESSION['erros'] = "O formato do arquivo é inválido! Lembre-se, você só pode selecionar arquivos do tipo png, jpeg, jpg, mp3, ogg!";
+                $_SESSION['erros_formatos'] = "O formato do arquivo é inválido! Lembre-se, você só pode selecionar arquivos do tipo png, jpeg, jpg, mp3, ogg!";
                 header('location:ouvidoria_front.php?id='.$id_denuncia.'');
                 exit;
             }
@@ -93,13 +93,12 @@
 
 	} else {
 
-		echo "ola";
 		//inserindo no banco.
-		$insert_arquivo = "INSERT INTO mensagem 
-							(id_denuncia, id_usuario, data_mensagem, texto_mensagem)
-				     VALUES ($id_denuncia, $id_usuario, '$data_mensagem', '$mensagem_denuncia')";
+		$insert_mensagem = "INSERT INTO mensagem 
+                            (id_usuario, id_denuncia, data_mensagem, tipo_mensagem, endereco_mensagem)
+                     VALUES ($id_usuario, $id_denuncia, '$data_mensagem', 0, '$mensagem_denuncia')";
 		//executando o comando insert.
-		$query_arquivo = mysqli_query($conectar, $insert_arquivo);
+		$query_mensagem = mysqli_query($conectar, $insert_mensagem);
 
         //Fechando a conexão.
     	mysqli_close($conectar);
