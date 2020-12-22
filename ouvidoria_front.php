@@ -41,38 +41,36 @@
 	</head>
 	<body>
 
+		<!-- Navbar -->
 		<?php 
 			include("navbar.php");
 		?>
 
 		<div class="container-fluid mt-3 mb-3">
 			<div class="row justify-content-center">
+
+				<!-- Listagem das Denúncias, das informações do usuário e opção de cadastro, edição e exclusão de denunucia. -->
 				<div class="col-lg-3 col-md-3 col-sm-10 border mr-2 mb-3 bg-white rounded" 
 				     style="height: 500px; overflow: auto; position: relative">
-
 				    <?php
 						include_once("ouvidoria_listagem_denuncias.php");
 				    ?>
-
 				</div>
 
-				<!-- MENSAGENS DAS DENÚNCIAS -->
-				<div class="col-lg-8 col-md-8 col-sm-10 border bg-white justify-content-center rounded" 
-				     style="height: 500px; position: relative; overflow: auto ">
-
+				<!-- Listagem das mensagens e do chat em geral. -->
+				<div class="col-lg-8 col-md-8 col-sm-10 border bg-white justify-content-center rounded" style="height: 500px;">
 				    <?php
 						include_once("ouvidoria_chat.php");
 				    ?>
-
 				</div>
 
 			</div>
 		</div>
 
+		<!-- Rodapé -->
 		<?php 
 			include("rodape.php");
 		?>
-
 
   		<!-- Icons -->
   		<script type="text/javascript" src="icons/js/all.js"></script> 

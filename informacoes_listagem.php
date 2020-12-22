@@ -9,9 +9,11 @@
 	//Pegando as infos.
 	$descricoes        = mysqli_fetch_assoc($query_descricoes);	
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Informações</title>
 		<!-- Meta tag Obrigatória -->
 	    <meta charset="utf-8">
@@ -28,106 +30,114 @@
 		<link href="https://fonts.googleapis.com/css2?family=Katibeh&family=Roboto:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Katibeh&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display:wght@400;800&display=swap" rel="stylesheet">
+
 	</head>
 	<body>
 
-		<header style="height: 100vh; background: no-repeat center/cover url('./img/header2.jpg');">
-			<!-- Navbar -->
-			<?php
-				include_once('navbar.php')
-			?>
+<!-- HEADER -->
+	<header style="height: 100vh; background: no-repeat center/cover url('./img/teste.png');">
+		<!-- Navbar -->
+		<?php
+			include_once('navbar.php')
+		?>
 
-			<div class="header-content">
-				<h1 style="font-family: 'Staatliches', cursive; font-size: 50px" class="text-white texto-topicos mt-3 mb-4"> BEM VINDO</h1>
-				<p class="text-white texto-corpo" style="font-size: 1.5rem">Aqui você encontrará informações sobre a Coordenação de Ações Inclusivas do campus Frederico Whestphalen, além os Núcelos que a compõe.</p>
-				<button class="btn mt-4 texto-buttons text-white btn-lg" style="background-color: #3CB371; font-weight: 800" >SAIBA MAIS</button>
-			</div>
-		</header>
+		<div class="header-content">
+			<h1 style="font-family: 'Staatliches', cursive; font-size: 50px" class="text-white texto-topicos mt-3 mb-4"> BEM VINDO A NOSSA PÁGINA!</h1>
+			<p class="text-white " style="font-size: 1.5rem; font-family: 'Lobster', cursive; font-family: 'Playfair Display', serif;">Aqui você encontra informações sobre a Coordenação de Ações Inclusivas do campus Frederico Whestphalen, além os Núcelos subordinados à ela..</p>
+			<button class="btn mt-4 texto-buttons text-white btn-lg" style="background-color: #B22222; font-weight: 800" >SAIBA MAIS</button>
+		</div>
+	</header>
 
 <!-- CAI -->
-		<div class="container mt-5">
-			<div class="row texto-topicos justify-content-center mt-4"> A CAI </div>
-			<div class="row texto-subtopicos justify-content-center">Conheça mais sobre a CAI do campus Frederico Whestphalen.</div>
+	<div class="container mt-5">
+		<div class="row texto-topicos justify-content-center mt-4"> A CAI </div>
+		<div class="row texto-subtopicos justify-content-center">Conheça mais sobre a CAI do campus Frederico Whestphalen.</div>
 			
-			<div class="row mt-5">
-				<div class="col bg-white text-center">			
-					<!-- titulo CAI -->
-					<h1 class="mt-5 texto-titulo">COORDENAÇÃO DE AÇÕES INCLUSIVAS</h1><br>	
-					<!-- descrição CAI-->
-					<p class="texto-corpo text-justify"><?php echo $descricoes['cai_descricao']; ?></p>
-					<!-- button -->
-					<button type="button" class="btn texto-buttons" style="background-color: #3CB371;" data-toggle="modal" data-target="#cai">SABER MAIS</button>
-					<!-- Modal -->
-							<div class="modal fade" id="cai" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-							  	<div class="modal-dialog">
-							    	<div class="modal-content">
-							      		<div class="modal-header">
-								      		<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE A CAI</h5>
-								        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          		<span aria-hidden="true">&times;</span>
-								        	</button>
-							     		</div>
-							      		<div class="modal-body">
-							      			<p class="text-justify texto-corpo"><?php echo $descricoes['cai_descricao'];?></p>
-							       			<br><img class="text-center" src="./img/cai/cai.png">
-							      		</div>
-									      <div class="modal-footer">
-									        <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
-									      </div>
-							    	</div>
-							  	</div>
-							</div>
-						
-						
-					<!-- botão de edição -->
-					<?php
-						if(empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] == 2){
-							//não faz nada
-						} else if ($_SESSION['tipo_usuario'] == 1){
-							echo '	
-						  		<!-- Botão de Edição -->		
-									<button type="button" class="btn texto-buttons" style="background-color: #3CB371;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <i class="far fa-edit fa-1x"></i> EDITAR</button>	';
-						} 
-					?>
+		<div class="row mt-5">
+			<div class="col bg-white text-center">			
+				<!-- titulo CAI -->
+				<h1 class="mt-5 texto-titulo">COORDENAÇÃO DE AÇÕES INCLUSIVAS</h1><br>	
+				<!-- descrição CAI-->
+				<p class="texto-corpo text-justify"><?php echo $descricoes['cai_descricao']; ?></p>
+				<!-- button -->
+				<button type="button" class="btn texto-buttons text-white" style="background-color: #3CB371;" data-toggle="modal" data-target="#cai">SABER MAIS</button>
 
-					<!-- Modal Edição -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-						    <div class="modal-content">
-						  		<div class="modal-header text-center">
-						        	<h5 class="modal-title texto-corpo"  id="exampleModalLabel">EDITE AS DESCRIÇÕES!</h5>
-						        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						          		<span aria-hidden="true">&times;</span>
-						        	</button>
-						     	</div>
-						      	<div class="modal-body texto-corpo">
-						       		<form action="informacoes_editar_back.php" method="post">    
-										<label for="#" class="texto-buttons">CAI</label>
-										<input type="text" class="form-control" name="descricao_cai" value="<?php echo $descricoes['cai_descricao']; ?>"  placeholder="" required data-length="10">
-										<label for="#" class="texto-buttons">NAPNE</label>
-										<input type="text" class="form-control" name="descricao_napne" value="<?php echo $descricoes['napne_descricao']; ?>"  placeholder="" required data-length="10">
-										<label for="#" class="texto-buttons">NEABI</label>
-										<input type="text" class="form-control" name="descricao_neabi" value="<?php echo $descricoes['neabi_descricao']; ?>"  placeholder="" required data-length="10">
-										<label for="#" class="texto-buttons">NUGEDIS</label>
-										<input type="text" class="form-control" name="descricao_nugedis" value="<?php echo $descricoes['nugedis_descricao']; ?>"  placeholder="" required data-length="10">
-										 <button type="button" class="btn mt-2 texto-buttons text-white" style="background-color: #f35753" data-dismiss="modal">CANCELAR</button>
-							        	<button type="submit" class="btn mt-2 texto-buttons text-white" style="background-color: #3CB371;">EDITAR</button>
-						       		</form>
-						      	</div>
+				<!-- MODAL -->
+				<div class="modal fade" id="cai" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						   	<div class="modal-header">
+							  	<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE A CAI</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								  	<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+						        <p class="text-justify texto-corpo"><?php echo $descricoes['cai_descricao'];?></p>
+						      	<br><img class="text-center" src="./img/cai/cai.png">
 						    </div>
-						 </div>
+					        <div class="modal-footer">
+								<button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+							</div>
+						</div>
 					</div>
 				</div>
+						
+						
+				<!-- BOTÃO DE EDIÇÃO -->
+				<?php
+					if(empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] == 2){
+						//não faz nada
+					} else if ($_SESSION['tipo_usuario'] == 1){
+						echo '			
+							<button type="button" class="btn texto-buttons" style="background-color: #3CB371;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <i class="far fa-edit fa-1x"></i> EDITAR</button>	';
+					} 
+				?>
 
-				<!-- Carroseul -->
-				<div class="col bg-light shadow-sm">
-					<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-					  <ol class="carousel-indicators">
+				<!-- MODAL DE EDIÇÃO DAS INFORMAÇÕES -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						  	<div class="modal-header text-center">
+						        <h5 class="modal-title texto-corpo"  id="exampleModalLabel">EDITE AS DESCRIÇÕES!</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          	<span aria-hidden="true">&times;</span>
+						        </button>
+						    </div>
+						    <div class="modal-body texto-corpo">
+						       	<form action="informacoes_editar_back.php" method="post">    
+									<label for="#" class="texto-buttons">CAI</label>
+									<input type="text" class="form-control" name="descricao_cai" value="<?php echo $descricoes['cai_descricao']; ?>"  placeholder="" required data-length="10">
+										
+									<label for="#" class="texto-buttons">NAPNE</label>
+									<input type="text" class="form-control" name="descricao_napne" value="<?php echo $descricoes['napne_descricao']; ?>"  placeholder="" required data-length="10">
+									
+									<label for="#" class="texto-buttons">NEABI</label>
+									<input type="text" class="form-control" name="descricao_neabi" value="<?php echo $descricoes['neabi_descricao']; ?>"  placeholder="" required data-length="10">
+									
+									<label for="#" class="texto-buttons">NUGEDIS</label>
+									<input type="text" class="form-control" name="descricao_nugedis" value="<?php echo $descricoes['nugedis_descricao']; ?>"  placeholder="" required data-length="10">
+										
+									<button type="button" class="btn mt-2 texto-buttons text-white" style="background-color: #f35753" data-dismiss="modal">CANCELAR</button>
+							        <button type="submit" class="btn mt-2 texto-buttons text-white" style="background-color: #3CB371;">EDITAR</button>
+						       	</form>
+						    </div>
+						</div>
+				    </div>
+			    </div>
+		    </div>
+
+				<!-- CARROUSEL CAI -->
+			<div class="col bg-light shadow-sm">
+				<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
 					    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
 					    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
 					    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-					  </ol>
-					  <div class="carousel-inner">
+					</ol>
+					<div class="carousel-inner">
 					    <div class="carousel-item active">
 					      <img src="./img/carrousel1.png" class="d-block w-100" alt="...">
 					    </div>
@@ -137,115 +147,141 @@
 					    <div class="carousel-item">
 					      <img src="./img/carrousel3.png" class="d-block w-100" alt="...">
 					    </div>
-					  </div>
-					  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
 					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					    <span class="sr-only">Previous</span>
-					  </a>
-					  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
 					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 					    <span class="sr-only">Next</span>
-					  </a>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
+	</div>
 
 <!-- NÚCLEOS -->
-		<div class="container-fluid mt-5 mb-5 bg-white">
-			<div class="row texto-topicos justify-content-center mt-5"> NÚCLEOS </div>
+	<div class="container-fluid mt-5 mb-5 bg-white">
+		<div class="row texto-topicos justify-content-center mt-5"> NÚCLEOS </div>
+			<div class="row texto-subtopicos justify-content-center"> 
+				Conheça um pouco mais sobre os núcelos. 
+			</div>
 
-				<div class="row texto-subtopicos justify-content-center"> 
-					Conheça um pouco mais sobre os núcelos. 
-				</div>
+				<div class="row mt-5 row-cols-1 row-cols-md-3 mb-5">
+<!-- NAPNE -->
+					<div class="col mb-5 text-center align-items-center"> 
 
-					<div class="row mt-5 row-cols-1 row-cols-md-3 mb-5">
+						<!-- ÍCONE -->
+						<div class="row mb-4 align-items-center justify-content-center">
+							<div class="justify-content-center  text-white align-items-center" style="width: 120px; height: 110px; border-radius: 100%; background-color: #B22222; ">
+								<i class="fab fa-accessible-icon fa-4x mt-4" ></i>		               
+			              	</div>
+			            </div>
+							
+						<h1 class="texto-titulo">NAPNE</h1>
+						<p class="texto-corpo"><?php echo substr($descricoes['napne_descricao'], 0, 300)."..."; ?></p>
+						<button type="button" style="background-color: #B22222;" class="btn texto-buttons text-white" data-toggle="modal" data-target="#napne">SABER MAIS</button>
 						
-						<!-- NAPNE -->
-						<div class="col mb-5 text-center align-items-center">  
-							<h1 class="texto-titulo">NAPNE</h1>
-							<p class="texto-corpo"><?php echo substr($descricoes['napne_descricao'], 0, 300)."..."; ?></p>
-							<button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-toggle="modal" data-target="#napne">SABER MAIS</button>
-							<!-- Modal -->
-							<div class="modal fade" id="napne" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-							  	<div class="modal-dialog">
-							    	<div class="modal-content">
-							      		<div class="modal-header">
-								      		<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE O NAPNE</h5>
-								        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          		<span aria-hidden="true">&times;</span>
-								        	</button>
-							     		</div>
-							      		<div class="modal-body">
-							      			<p class="text-justify texto-corpo"><?php echo $descricoes['napne_descricao'];?></p>
+						<!-- MODAL -->
+						<div class="modal fade" id="napne" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							    <div class="modal-content">
+							      	<div class="modal-header">
+								      	<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE O NAPNE</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          	<span aria-hidden="true">&times;</span>
+								        </button>
+							     	</div>
+							      	<div class="modal-body">
+							      		<p class="text-justify texto-corpo"><?php echo $descricoes['napne_descricao'];?></p>
 							       			<br><img class="text-center" src="./img/napne/bandeira_napne.png">
-							      		</div>
-									      <div class="modal-footer">
-									        <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
-									      </div>
-							    	</div>
-							  	</div>
+							      	</div>
+									<div class="modal-footer">
+									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+									</div>
+							    </div>
 							</div>
 						</div>
+					</div>
 
-						<!--NEABI -->
-						<div class="col mb-5 text-center">		
-							<h1 class="texto-titulo">NEABI</h1>
-							<p class="texto-corpo"><?php echo substr($descricoes['neabi_descricao'], 0, 300)."..."; ?></p>
-							<button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-toggle="modal" data-target="#neabi">SABER MAIS</button>
-							<!--Modal -->
-							<div class="modal fade" id="neabi" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-							  	<div class="modal-dialog">
-							    	<div class="modal-content">
-							      		<div class="modal-header">
-								      		<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE O NEABI</h5>
-								        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          		<span aria-hidden="true">&times;</span>
-								        	</button>
-							     		</div>
-							      		<div class="modal-body">
-							      			<p class="text-justify texto-corpo"><?php echo $descricoes['neabi_descricao'];?></p>
-							       			<br><img class="text-center" src="./img/neabi/bandeira_neabi.png">
-							      		</div>
-									      <div class="modal-footer">
-									        <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
-									      </div>
-							    	</div>
-							  	</div>
-							</div>
-						</div>
+<!--NEABI -->
+					<div class="col mb-5 text-center">	
+
+						<!-- ÍCONE -->
+						<div class="row mb-4 align-items-center justify-content-center">
+							<div class="justify-content-center  text-white align-items-center" style="width: 120px; height: 110px; border-radius: 100%; background-color: #B22222; ">
+								<i class="fas fa-globe-africa fa-4x mt-4"></i>		               
+			              	</div>
+			            </div>
+
+						<h1 class="texto-titulo">NEABI</h1>
+						<p class="texto-corpo"><?php echo substr($descricoes['neabi_descricao'], 0, 300)."..."; ?></p>
+						<button type="button" style="background-color: #B22222;" class="btn texto-buttons text-white" data-toggle="modal" data-target="#neabi">SABER MAIS</button>
 						
-						<!-- NUGEDIS -->
-						<div class="col mb-5 text-center">
-							<h1 class="texto-titulo">NUGEDIS</h1>
-							<p class="texto-corpo"><?php echo substr($descricoes['nugedis_descricao'], 0, 300)."..."; ?></p>
-							<button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-toggle="modal" data-target="#nugedis">SABER MAIS</button>
-			
-							<!-- Modal -->
-							<div class="modal fade" id="nugedis" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-							  	<div class="modal-dialog">
-							    	<div class="modal-content">
-							      		<div class="modal-header">
-								      		<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE O NUGEDIS</h5>
-								        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          		<span aria-hidden="true">&times;</span>
-								        	</button>
-							     		</div>
-							      		<div class="modal-body">
-							      			<p class="text-justify texto-corpo"><?php echo $descricoes['nugedis_descricao'];?></p>
-							       			<br><img class="text-center" src="./img/nugedis/banderia_nugedis.png">
-							      		</div>
-									      <div class="modal-footer">
-									        <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
-									      </div>
-							    	</div>
-							  	</div>
-							</div>
+						<!--MODAL -->
+						<div class="modal fade" id="neabi" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							    <div class="modal-content">
+							      	<div class="modal-header">
+								      	<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE O NEABI</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          	<span aria-hidden="true">&times;</span>
+								        </button>
+							     	</div>
+							      	<div class="modal-body">
+							      		<p class="text-justify texto-corpo"><?php echo $descricoes['neabi_descricao'];?></p>
+							       		<br><img class="text-center" src="./img/neabi/bandeira_neabi.png">
+							      	</div>
+									<div class="modal-footer">
+									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+									</div>
+							    </div>
+							  </div>
 						</div>
+					</div>
+						
+<!-- NUGEDIS -->
+					<div class="col text-center">
+							
+						<!-- ÍCONE -->
+						<div class="row mb-4 align-items-center justify-content-center">
+							<div class="justify-content-center  text-white align-items-center" style="width: 120px; height: 110px; border-radius: 100%; background-color:#B22222; ">
+								<i class="fas fa-venus-mars fa-4x mt-4"></i>		               
+			              	</div>
+			            </div>
+
+						<h1 class="texto-titulo">NUGEDIS</h1>
+						<p class="texto-corpo"><?php echo substr($descricoes['nugedis_descricao'], 0, 300)."..."; ?></p>
+						<button type="button" style="background-color: #B22222;" class="btn texto-buttons text-white" data-toggle="modal" data-target="#nugedis">SABER MAIS</button>
+			
+						<!-- MODAL -->
+						<div class="modal fade" id="nugedis" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							    <div class="modal-content">
+							      	<div class="modal-header">
+								      	<h5 class="modal-title texto-corpo" style="font-size: 20px; text-decoration: underline #3CB371;" id="staticBackdropLabel">SAIBA MAIS SOBRE O NUGEDIS</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          	<span aria-hidden="true">&times;</span>
+								        </button>
+							     	</div>
+							        <div class="modal-body">
+							      		<p class="text-justify texto-corpo"><?php echo $descricoes['nugedis_descricao'];?></p>
+							       		<br><img class="text-center" src="./img/nugedis/banderia_nugedis.png">
+							      	</div>
+									<div class="modal-footer">
+									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+									</div>
+							    </div>
+							 </div>
+						</div>
+					</div>
 				</div>
 			</div>
 			
+
 <!-- NOTÍCIAS -->
+
 	<div class="container-fluid">
 		<div class="row texto-topicos justify-content-center mt-4">AS NOTÍCIAS</div>
 			<div class="row texto-subtopicos justify-content-center mb-4">Por aqui você pode acompanhar as notícias da coordenação.</div>
@@ -283,7 +319,7 @@
 									      <div class="card-body text-center">
 									        <h5 class="card-title texto-corpo">'.$titulo_noticia.'</h5>
 									        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
-									        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons" style="background-color: #3CB371;"> VER MAIS</a>
+									        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons text-white" style="background-color: #3CB371;"> VER MAIS</a>
 									        </div>
 									    </div>
 							    </div>';
@@ -297,7 +333,7 @@
 									      <div class="card-body text-center">
 									        <h5 class="card-title texto-corpo">'.$titulo_noticia.'</h5>
 									        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
-									        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons" style="background-color: #3CB371;"> VER MAIS</a>
+									        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons text-white" style="background-color: #3CB371;"> VER MAIS</a>
 									        </div>
 									    </div>
 							    	</div>';
@@ -312,7 +348,7 @@
 									      <div class="card-body text-center">
 									        <h5 class="card-title texto-corpo">'.$titulo_noticia.'</h5>
 									        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
-									       <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons" style="background-color: #3CB371;"> VER MAIS</a>
+									       <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons text-white" style="background-color: #3CB371;"> VER MAIS</a>
 									        </div>
 									    </div>
 							    	</div>';
@@ -327,9 +363,9 @@
 							      <img src="./img/texto.png" class="card-img-top" style=" width: 100%;
 		  						height: 250px;" alt="...">
 							      <div class="card-body text-center">
-							        <h5 class="card-title texto-corpo"> NI E DI </h5>
+							        <h5 class="card-title texto-corpo">'.$titulo_noticia.'</h5>
 							        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
-							        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons" style="background-color: #3CB371;"> VER MAIS</a>
+							        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons text-white" style="background-color: #3CB371;"> VER MAIS</a>
 							        </div>
 							    </div>
 					    	</div>';

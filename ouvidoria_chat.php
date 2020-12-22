@@ -1,11 +1,10 @@
 <?php
 				
-	//Logo que o usuário entra no sistema, não há nenhuma mensagem escolhida, ou seja, nenhum id. 
-	// O teste é feito para que, sempre que um usuário entrar, ele não ver o erro.
+	//Logo que o usuário entra no sistema, não há nenhuma mensagem escolhida, ou seja, nenhum id no GET. 
+	//O teste é feito para que, sempre que um usuário entrar, ele não ver um erro.
 if(empty($_GET['id'])){
 
 	echo '
-
 		<div class="row mt-5 ml-4 mr-4 justify-content-center" style="background-color: #3CB371; ">
 			<div class="col-6 texto-corpo text-center font-weight-bold" style="font-size: 1.2rem; background-color: #fff">
 				Olá, seja bem vindo a nossa ouvidoria! 
@@ -26,22 +25,20 @@ if(empty($_GET['id'])){
 				    Por isso, você pode se sentir a vontade em denúnciar! 
 				    <br> Estaremos ouvindo! 
 			</div>
-		</div>
+		</div>';
 
-		';
+} else {
 
-	} else {
-
-		//ESSA PARTE FAZ O CABEÇALHO
+//CABEÇALHO DO CHAT
+		
 		//Id da denuncia.
 		$id_denuncia = $_GET['id'];
 
-		//Selecionando todas as informações da denuncia referente ao id vindo por get 
-		//e executanto com o mysqli_query
+		//Selecionando todas as informações da denuncia referente ao id vindo por get e executanto com o mysqli_query.
 		$select_denuncia = "SELECT * FROM denuncia WHERE id_denuncia = $id_denuncia";
 		$query_denuncia  = mysqli_query($conectar, $select_denuncia);
 
-		//foreach pegando as informações da denuncia
+		//foreach pegando as informações da denuncia.
 		foreach ($query_denuncia as $denuncia) {
 			$titulo_denuncia    = $denuncia['titulo_denuncia'];
 			$anonimato_denuncia = $denuncia['anonimato_denuncia'];
@@ -49,14 +46,14 @@ if(empty($_GET['id'])){
 			$data_denuncia      = substr( $denuncia['data_denuncia'], 0, 16);
 		}
 
-		//Se a denuncia for renomada
+		//Se a denuncia for renomada.
 		if ($anonimato_denuncia == 2){
 
-			//Selecione as informações do usuario
+			//Selecione as informações do usuario.
 			$select_usuario = "SELECT * FROM usuario WHERE id_usuario = $id_usuario";
 			$query_usuario  = mysqli_query($conectar, $select_usuario);
 
-			//Pegue as informações
+			//Pegue as informações.
 			foreach ($query_usuario as $usuario) {
 				$email_usuario = $usuario['email_usuario'];
 				$nome_usuario  = $usuario['nome_usuario'];
@@ -99,33 +96,44 @@ if(empty($_GET['id'])){
 				';
 		}
 
-						echo '<div class="row justify-content-center mt-4"> 
-							<div class="col-sm-9 col-md-8 col-lg-7 text-center"> ';
-								 
-									  if(isset($_SESSION['erros_formatos'])) {
-									  		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
-											echo $_SESSION['erros_formatos'];
-											echo "</div>";
-										}
-							     echo "
-							
-							</div>
-						</div>";
+		//Depois do cabeçalho, há as possiveis sessions que podem aparecer. Essa é a do formato.
+		echo '<div class="row justify-content-center mt-4"> 
+					<div class="col-sm-9 col-md-8 col-lg-7 text-center"> ';		 
+						if(isset($_SESSION['erros_formatos'])) {
+							echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
+								echo $_SESSION['erros_formatos'];
+							echo "</div>";
+						}
+		echo "
+					</div>
+				</div>";
 
-		//PARTE QUE LISTA O CHAT
+//MENSAGEM DO CHAT.
+
+		//Selecionando todas as mensagens da denúncia e executando o sql.
 		$select_mensagem = "SELECT * FROM mensagem WHERE id_denuncia = $id_denuncia";
 		$query_mensagem  = mysqli_query($conectar, $select_mensagem);
+
+		//contando quantas mensagens tem.
 		$rows_mensagem   = mysqli_num_rows($query_mensagem);
 
+		echo "<div class='container-fluid' style='height: 325px; position: relative; overflow: auto'>";
+
+		//Se houver uma mensagem ou mais, entra no if.
 		if($rows_mensagem >= 1){
 
+			//foreach percorrendo a query.
 			foreach ($query_mensagem as $mensagem) {
+				//Guardando nas variáveis.
 				$endereco_mensagem = $mensagem['endereco_mensagem'];
 				$tipo_mensagem     = $mensagem['tipo_mensagem'];
 				$data_mensagem     = $mensagem['data_mensagem'];
 				$id_usuario        = $mensagem['id_usuario'];
 
+				//Se a mensagem do momento for do usuário logado na session, a formatação será diferente de caso não for.
 				if($id_usuario == $_SESSION['id_usuario']){
+					
+					//Se a mensagem é do tipo 0, ou seja, texto.
 					if($tipo_mensagem == 0){
 						echo '
 						<div class="row justify-content-end mt-1">
@@ -136,6 +144,7 @@ if(empty($_GET['id'])){
 							</div>
 						</div>';
 
+					//Se a mensagem é do tipo 1, ou seja, imagem.
 					}elseif($tipo_mensagem == 1){
 						echo '
 						<div class="row justify-content-end">
@@ -144,6 +153,7 @@ if(empty($_GET['id'])){
 							</div>
 						</div>';
 
+					//Se não for nenhuma das duas, significa que é áudio, o que restou.
 					} else {
 						echo "
 						<div class='row justify-content-end'>
@@ -154,7 +164,11 @@ if(empty($_GET['id'])){
 				            </div>
 				        </div>";
 					}
+
+				//Caso o id da mensagem não bata com o usuário logado.
 				} else {
+
+					//0 = texto.
 					if($tipo_mensagem == 0){
 						echo '
 						<div class = "row justify-content-start mt-1">
@@ -164,6 +178,8 @@ if(empty($_GET['id'])){
 								</div>
 							</div>
 						</div> ';
+
+					//1 = imagem.
 					}elseif($tipo_mensagem == 1){
 						echo '
 						<div class="row justify-content-start">
@@ -172,6 +188,7 @@ if(empty($_GET['id'])){
 							</div>
 						</div>';
 
+					//2 = áudio.
 					} else {
 						echo "
 						<div class='row justify-content-start'>
@@ -182,15 +199,15 @@ if(empty($_GET['id'])){
 				            </div>
 				        </div>";
 					}
-
-				}
-
-			}
+				}//fim do if dos id.
+			}// fim do foreach.
 		} else {
-
+			//Caso for 0, não lista nada.
 		}
+		echo '</div>';
 
-		//PARTE DO CADASTRO DAS MENSGANS E ARQUIVOS
+//MENSAGEM.
+
 		echo '
 			<hr>
 			<!-- Formulário de Mensagem -->
@@ -212,7 +229,7 @@ if(empty($_GET['id'])){
 
 				    <!-- Input Arquivo -->
 				    	
-							<div class="form-grup col-1 mb-3"> 
+							<div class="form-grup col-1"> 
 								<label for="imagem" class="btn text-white" style="background-color: #3CB371;"><i class="fas fa-folder-open"></i></label>
 								<input type="file" class="form-control" style="display: none;" name="foto[]" multiple id="imagem" onchange="previewImagem()">
 							</div>			        		

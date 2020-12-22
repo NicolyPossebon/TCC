@@ -70,7 +70,7 @@
 							<div class="col-sm-9 col-md-8 col-lg-7 mb-3">
 								<center><label for="#" class="texto-corpo">Senha </label></center>
 							    <input type="password" class="form-control" id="#" name="senha_usuario">
-							    <a href="usuario_recuperacao_senha.php" class="texto-corpo">Esqueceu a senha?</a>
+							    <a href="#" class="texto-corpo">Esqueceu a senha?</a>
 							</div>
 						</div>
 

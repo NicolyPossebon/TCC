@@ -54,26 +54,28 @@
 
         $contador = 0;
 
-        //While que repete até a $quantidadeArquivos
+        //While que repete até a $quantidadeArquivos.
         while($contador < $quantidadeArquivos){
 
-            //Pega a extensao do arquivo
+            //Pega a extensao do arquivo.
             $extensao = pathinfo($_FILES['foto']['name'][$contador], PATHINFO_EXTENSION);
 
-            //Testa para ver se a extenção do arquivos escolhido pelo usuário está no array
+            //Testa para ver se a extenção do arquivos escolhido pelo usuário está no array.
             if(in_array($extensao, $extensoes_permitidas)){
 
-                //Diretório onde as fotos serão armazenadas
+                //Diretório onde as fotos serão armazenadas.
                 $pasta ="postagens/";
 
                 //Nome temporário (?)
                 $temporario = $_FILES['foto']['tmp_name'][$contador];
 
-                //uniqid faz com que cada foto tenha um nome único e concatena com a extensao
+                //uniqid faz com que cada foto tenha um nome único e concatena com a extensao.
                 $foto = uniqid().".$extensao";
 
+                //Une a pasta com o nome do arquivo, ou seja, armazena em $enderecoarquivo o endereco da imagem no pc.
                 $arquivo_insert = $pasta.$foto;
-                // if que testa se manda pra pasta
+
+                //If que testa se manda pra pasta.
                     if(move_uploaded_file($temporario, $pasta.$foto)){
 
                         //echo "Upload feito com sucesso";

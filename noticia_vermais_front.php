@@ -42,7 +42,7 @@
 	</head>
 	<body>			
 
-		<!-- navbar -->
+		<!-- Navbar -->
 		<?php
 			include("navbar.php");
 		?>
@@ -50,7 +50,7 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pt-2 mt-2 ">
 				<div class="col-sm-12 col-md-10 col-lg-10 p-3 mt-4 rounded-lg text-center">
-
+					
 					<!-- TÍTULO -->
 					<div class="row">
 						<div class="col">
@@ -83,12 +83,10 @@
 							echo ' 
 								<div class="row">
 									<div class="col">
-										<div id="carouselExampleControls" class="carousel slide"              data-ride="carousel">
+										<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 											<div class="carousel-inner"> ';
 
-											  	//
 											  	foreach($query_foto as $key => $midia){
-											  		
 											  		if($key == 0){	
 			               								echo "
 			               									<div class='carousel-item active'>
@@ -100,8 +98,8 @@
 			                								<div class='carousel-item'>
 			                									<img src='".$midia['endereco_arquivo_noticia']."' class='d-block w-100'></img>
 			                 								</div> ";		
-			              								}
-												  	}
+			              								}// fim do if
+												  	}//fim do foreach
 											echo'   		
 												<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 													<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -175,7 +173,7 @@
 											<i class="far fa-edit fa-1x"></i> 		
 											EDITAR		
 										</a>
-							 			<a class="btn rounded vermelho botoes texto-buttons text-white" 
+							 			<a class="btn rounded botoes texto-buttons text-white" style="background-color: #B22222" 
 							 			   href="noticia_excluir_back.php?id='.$id_noticia.'" 
 							 			   data-confirm="Tem certeza que deseja excluir o item selecionado?">
 							 				<i class="far fa-trash-alt fa-1x"></i>

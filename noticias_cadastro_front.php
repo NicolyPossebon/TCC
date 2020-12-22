@@ -78,13 +78,6 @@
 							</div>
 						</div>
 
-						<!-- Preview da Imagem 
-						<div class="form-row justify-content-center"> 
-							<div class="form-grup col-10 mb-3 text-center"> 
-								<img class="img-fluid">
-							</div>
-						</div> -->
-
 						<!-- Vídeo -->
 						<div class="form-row justify-content-center">
 							<div class="form-grup  mb-3 col-10">
@@ -114,28 +107,6 @@
 				</div>
 			</div>
 		</div>
-
-		<script>	
-			/* Previw da Imagem */
-			function previewImagem(){
-				var imagem = document.querySelector('input[name=imagem]').files[0];
-			    var preview = document.querySelector('img');
-							
-				var reader = new FileReader();
-				
-				reader.onloadend = function (){
-					preview.src = reader.result;
-				
-				}
-
-				if(imagem){
-					reader.readAsDataURL(imagem);
-				}else{
-					preview.src = "";
-				}
- 
-			} 
-		</script>
 
 		<!-- rodapé -->
 		<?php 

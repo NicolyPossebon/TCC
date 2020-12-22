@@ -40,7 +40,7 @@
 			<div class="container">
 				<div class="row justify-content-center">
 	  				<div class="col-10 mb-1 mt-4 ">
-	  					<a href="noticias_cadastro_front.php" class="btn botoes-texto texto-buttons cinza shadow btn-lg btn-block" style="font-size: 20px;">
+	  					<a href="noticias_cadastro_front.php" class="btn botoes-texto texto-buttons shadow btn-lg btn-block" style="font-size: 20px; background-color: #B22222;">
 	  						Cadastrar Nova Notícia
 	  					</a>
 					</div>
@@ -90,10 +90,11 @@
 						      <div class="card-body text-center">
 						        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
 						        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
-						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho"> VER MAIS</a>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons" style="background-color: #B22222;"> VER MAIS</a>
 						        </div>
 						    </div>
 				    	</div>';
+
 				    //Se for 2 = audio.
 					} else if($tipo_arquivo == 2){
 						echo ' 
@@ -102,12 +103,13 @@
 						      <img src="./img/audio.png" class="card-img-top" style=" width: 100%;
 	  						height: 250px;" alt="...">
 						      <div class="card-body text-center">
-						        <h5 class="card-title">'.$titulo_noticia.'</h5>
-						        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho"> VER MAIS</a>
+						        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
+						        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho" style="background-color: #B22222;"> VER MAIS</a>
 						        </div>
 						    </div>
 				    	</div>';
+
 				    //Se for 3 = vídeo.
 					} else if($tipo_arquivo == 3){
 						echo ' 
@@ -116,15 +118,16 @@
 						      <img src="./img/video.png" class="card-img-top" style=" width: 100%;
 	  						height: 250px;" alt="...">
 						      <div class="card-body text-center">
-						        <h5 class="card-title">'.$titulo_noticia.'</h5>
-						        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho"> VER MAIS</a>
+						        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
+						        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
+						        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn text-white texto-buttons vermelho" style="background-color: #B22222;"> VER MAIS</a>
 						        </div>
 						    </div>
 				    	</div>';
 					}
 				}// fim do foreach
-			//Siginifa que é texto.
+			
+			//Se for 0 = texto.
 			} else if ($rows == 0) {
 				echo ' 
 		  			<div class="col mb-4">
@@ -132,9 +135,9 @@
 					      <img src="./img/texto.png" class="card-img-top" style=" width: 100%;
   						height: 250px;" alt="...">
 					      <div class="card-body text-center">
-					        <h5 class="card-title"> NI E DI </h5>
-					        <p class="card-text text-justify">'.$descricao_noticia.'...</p>
-					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons vermelho text-white"> VER MAIS</a>
+					        <h5 class="card-title texto-corpo" style="text-transform: uppercase">'.$titulo_noticia.'</h5>
+					        <p class="card-text text-justify texto-corpo">'.$descricao_noticia.'...</p>
+					        <a href="noticia_vermais_front.php?id_noticia='.$id_noticia.'" class="btn texto-buttons vermelho text-white" style="background-color: #B22222;"> VER MAIS</a>
 					        </div>
 					    </div>
 			    	</div>';

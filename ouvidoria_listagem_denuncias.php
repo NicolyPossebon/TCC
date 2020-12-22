@@ -1,6 +1,6 @@
 <?php 
 
-    //MINI PERFIL
+//PERFIL
 
 	//Id do usuario.
 	$id_usuario = $_SESSION['id_usuario'];
@@ -10,7 +10,7 @@
 	$query_usuario       = mysqli_query($conectar, $select_usuario);
 	$informacoes_usuario = mysqli_fetch_array($query_usuario);
 
-	//Listando as informações obtidas no select
+	//Listando as informações obtidas no select.
 	echo '
 		<div class="row ">
 			<div class="col text-center mb-3 mt-1">
@@ -31,14 +31,21 @@
 		</div>
 	';
 
+	//Exibição da session que indica erro na edição;
+	if(isset($_SESSION['erros_edicao'])) {
+		echo "<div class='alert alert-danger texto-corpo' style='font-size: 15px;' role='alert'>";
+			echo $_SESSION['erros_edicao'];
+		echo "</div>";
+	}
 
-    //BOTÃO DE CADASTRO + FORM DE CADASTRO DA DENU
 
-    //Se o usuario é do tipo 2, é um usuário "comum".
+//CADASTRO DA DENUNCIA.
+
+    //Se o usuario é do tipo 2, é um usuário "comum". Isso indica que ele pode cadastrar uma denúncia.
 	if($_SESSION['tipo_usuario'] == 2){
 		
+		//Botão que chama o formulário de cadastro e o próprio formulário.
 		echo '
-
 			<!-- Botão que "chama" o formulário de cadastro. -->
 			<div class="row">
 				<div class="col">
@@ -86,17 +93,17 @@
 			    </div>
 			</form> ';
 
-		//LISTAGEM DAS DENÚNCIA 
+//LISTAGEM DAS DENÚNCIA 
 
-		//como o usuário não é adm, só as suas denuncias devem ser selecionadas
+		//como o usuário não é adm, só as suas denuncias devem ser selecionadas.
 		$select = "SELECT * FROM  denuncia
 				   WHERE id_usuario = $id_usuario 
 			       ORDER BY data_denuncia DESC";
 
-		//query exeutando o select
+		//query exeutando o select.
 		$query = mysqli_query($conectar, $select);
 
-		//foreach pra conseguir as infos da denuncia
+		//foreach pra conseguir as infos da denuncia.
 		foreach ($query as $denuncia) {
 			$id              = $denuncia['id_denuncia'];
 			$titulo_denuncia = $denuncia['titulo_denuncia'];
@@ -151,7 +158,7 @@
 				</div>';
 		}//fim do foreach.
 							
-		//Se o usuário for adm...
+		//Se o usuário for adm, ele só terá acesso as denúncias. Não poderá cadastrá-las, editá-las ou excluir-las.
 		} else if($_SESSION['tipo_usuario'] == 1){
 					
 			//Selecionando informações de todas as denúncias.
@@ -184,7 +191,7 @@
 						
 ?>
 
-	<!-- Modal da Edição -->
+	<!-- Modal da Edição do título da denuncia. -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -202,19 +209,34 @@
 				 		</div>
 				  
 				  		<!-- id -->
-						<input name="id" type="hidden" class="form-control" id="iddenuncia" value="<?php echo $_GET['id']; ?>">
-				
+				  		<?php 
+				  		//Se houver algo no GET, armazena.
+				  		if (isset($_GET['id'])){
+							echo '<input name="id" 
+										 type="hidden" 
+										 class="form-control" 
+										 id="iddenuncia" 
+										 value="'.$_GET["id"].'">';
+				  			unset($_SESSION['erros_edicao']);
+				  		//Se não há, armazena um espaço em branco. Caso isso não fosse feito, haveriam erros na edição.
+				  		} else {
+				  			echo '
+				  				<input name="id" 
+				  					   type="hidden" 
+				  					   class="form-control" 
+				  					   id="iddenuncia" 
+				  					   value=""> ';
+				  		}
+				  		?>
+						
 						<button type="button" data-dismiss="modal" class="btn texto-buttons text-white" style="background-color: #3CB371">CANCELAR</button>
 						<button type="submit" class="btn texto-buttons text-white" style="background-color: #f35753">EDITAR</button>
-			 
 					</form>
 			    </div>
-			  
 			</div>
 		</div>
 	</div>
   	
-
   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

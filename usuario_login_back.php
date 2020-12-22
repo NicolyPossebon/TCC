@@ -44,6 +44,7 @@
 		unset($_SESSION['erros_formatos']);
 		unset($_SESSION['erros_cadastro']);
 		unset($_SESSION['acertos_cadastro']);
+		unset($_SESSION['erros_edicao']);
 
 		if($_SESSION['tipo_usuario'] == 2 ){ 
 			//usuario tipo 2 = usuário comum

@@ -5,7 +5,7 @@
 			    <div class="row justify-content-center">
                 				
                 	<!-- Localização -->
-			      	<div class="col-sm-5 col-mb-5 col-lg-4 text-center">
+			      	<div class="col-sm-5 col-mb-5 col-lg-4 text-center mt-3">
 			      		<h4 class="mb-2 text-white pt-3 texto-corpo" style="font-size: 20px;"> ENDEREÇO </h4>
 			      		<hr class="hr-verde">
                         <p class="lead mb-0 text-white text-justify texto-corpo" style="font-size: 17px;">
