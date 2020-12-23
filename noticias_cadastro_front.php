@@ -99,7 +99,7 @@
 						<!-- Button -->
 						<div class="form-row ">
 							<div class="col text-center">
-								<button type="submit" class="btn cinza text-white texto-buttons" style="background-color: #3CB371; text-transform: uppercase; font-weight: 700;">Enviar</button> 
+								<button type="submit" class="btn btn-lg cinza text-white texto-buttons" style="background-color: #3CB371; text-transform: uppercase; font-weight: 700;">Enviar</button> 
 							</div>
 						</div>
 

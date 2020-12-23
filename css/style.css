@@ -70,7 +70,7 @@ h6 {
 }
 
 .vermelho{
-	background-color: #B22222;
+	background-color: #f35753;
 }
 
 .cinza{
@@ -166,11 +166,6 @@ h6 {
 }
 
 
-header{
-    height: 100vh;
-    background: no-repeat center/cover url('./img/header2.jpg');
-}
-
 .header-content{
     max-width: 700px;
     margin: 170px auto;
@@ -210,7 +205,7 @@ header{
     font-family: 'Open Sans', sans-serif;
     font-family: 'Playball', cursive;
     font-family: 'Roboto', sans-serif;
-    text-decoration: underline #3CB371;
+   
     font-size: 25px;
 }
 
@@ -222,5 +217,11 @@ header{
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: 650;
+}
+
+
+
+.header-img {
+    filter: blur(3px); background: no-repeat center/cover url('./img/header.jpeg');
 }
 

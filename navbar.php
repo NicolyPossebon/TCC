@@ -18,7 +18,7 @@
 						    </a>
 						</li>
 						<li class='nav-item '>
-						    <a class='nav-link text-white btn border border-success' href='usuario_login_front.php'>
+						    <a class='nav-link text-white' href='usuario_login_front.php'>
 						    Ouvidoria
 						    <i class='fas fa-headphones-alt'> </i>
 						    </a>

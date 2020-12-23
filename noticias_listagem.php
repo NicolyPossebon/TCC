@@ -41,6 +41,7 @@
 				<div class="row justify-content-center">
 	  				<div class="col-10 mb-1 mt-4 ">
 	  					<a href="noticias_cadastro_front.php" class="btn botoes-texto texto-buttons shadow btn-lg btn-block" style="font-size: 20px; background-color: #B22222;">
+	  						<i class="fas fa-plus mr-2 "></i>
 	  						Cadastrar Nova Notícia
 	  					</a>
 					</div>

@@ -79,7 +79,7 @@
 						      	<br><img class="text-center" src="./img/cai/cai.png">
 						    </div>
 					        <div class="modal-footer">
-								<button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+								<button type="button" style="background-color: #3CB371;" class="btn texto-buttons text-white" data-dismiss="modal">ENTENDIDO</button>
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 						//não faz nada
 					} else if ($_SESSION['tipo_usuario'] == 1){
 						echo '			
-							<button type="button" class="btn texto-buttons" style="background-color: #3CB371;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <i class="far fa-edit fa-1x"></i> EDITAR</button>	';
+							<button type="button" class="btn texto-buttons text-white" style="background-color: #3CB371;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <i class="far fa-edit fa-1x"></i> EDITAR</button>	';
 					} 
 				?>
 
@@ -198,7 +198,7 @@
 							       			<br><img class="text-center" src="./img/napne/bandeira_napne.png">
 							      	</div>
 									<div class="modal-footer">
-									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons text-white" data-dismiss="modal">ENTENDIDO</button>
 									</div>
 							    </div>
 							</div>
@@ -234,7 +234,7 @@
 							       		<br><img class="text-center" src="./img/neabi/bandeira_neabi.png">
 							      	</div>
 									<div class="modal-footer">
-									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons text-white" data-dismiss="modal">ENTENDIDO</button>
 									</div>
 							    </div>
 							  </div>
@@ -270,7 +270,7 @@
 							       		<br><img class="text-center" src="./img/nugedis/banderia_nugedis.png">
 							      	</div>
 									<div class="modal-footer">
-									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons" data-dismiss="modal">ENTENDIDO</button>
+									    <button type="button" style="background-color: #3CB371;" class="btn texto-buttons text-white" data-dismiss="modal">ENTENDIDO</button>
 									</div>
 							    </div>
 							 </div>
